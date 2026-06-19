@@ -23,6 +23,18 @@ After completing this section, you will:
 
 ---
 
+## 🎯 Learning Workflow for Freshers
+
+To master system daemon management with systemd, follow this learning workflow:
+
+1.  **Step 1: Service Monitoring:** Read [systemd-basics.md](systemd-basics.md) to learn how to check service status, start/stop services, and review targets.
+2.  **Step 2: Service Unit Structure:** Understand unit configuration structure (`[Unit]`, `[Service]`, `[Install]`) in [systemd-basics.md](systemd-basics.md).
+3.  **Step 3: Creating a Daemon:** Follow the tutorial in [custom-service-example.md](custom-service-example.md) to define a custom `.service` file for a shell script.
+4.  **Step 4: Reloading & Enabling:** Practice reloading systemd configuration memory (`systemctl daemon-reload`) and enabling your service to run on VM boot.
+5.  **Step 5: Log Inspection:** Use `journalctl -u <service-name> -f` to stream service runtime logs and trace startup errors.
+
+---
+
 ## 🚀 DevOps Advantage
 Modern container engines like Docker and container orchestrators (Kubernetes) handle process persistence automatically. However, the host operating systems, databases, message brokers, and self-hosted build runners themselves are managed directly via systemd. Mastering systemd enables DevOps engineers to:
 - **Ensure High Availability**: Configure auto-restart policies so services revive immediately after a crash.

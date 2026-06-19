@@ -59,6 +59,18 @@ After inspecting, testing, and running these scripts, you will:
 
 ---
 
+## 🎯 Learning Workflow for Freshers
+
+If you are new to DevOps automation scripts, follow this practice sequence:
+
+1.  **Step 1: System Monitoring:** Start by analyzing [memory-monitor.sh](memory-monitor.sh) and [system-health-check.sh](system-health-check.sh) to understand basic utility parsing.
+2.  **Step 2: Threshold Alerts:** Read [disk-usage-alert.sh](disk-usage-alert.sh) to see how to trigger warning logs when thresholds are crossed.
+3.  **Step 3: Cleanups & Archiving:** Analyze [log-cleanup.sh](log-cleanup.sh) and [backup-script.sh](backup-script.sh) to learn file creation, purging, and tar packaging.
+4.  **Step 4: Active Daemon Control:** Examine [service-monitor.sh](service-monitor.sh) to see how scripts query systemd daemon states and trigger restarts.
+5.  **Step 5: System Auditing:** Study [user-audit.sh](user-audit.sh) to learn security filtering on `/etc/passwd` using `awk`.
+
+---
+
 ## ⚠️ Production Best Practices
 - **Never Run Unverified Scripts:** Always read and review the shell code before executing it on production VMs.
 - **Run with Least Privilege:** Avoid running scripts as `root` unless they perform tasks requiring administrator privileges (like service restarts or partition checks).

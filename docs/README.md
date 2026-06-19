@@ -52,3 +52,19 @@ Conceptual depth separates junior administrators from platform architects. Maste
 1. Start with the [Linux Filesystem Hierarchy](linux-filesystem-hierarchy.md) to familiarize yourself with directory layouts.
 2. Read [Terminal vs. Shell Concepts](terminal-vs-shell.md) to clarify interface definitions.
 3. Review the [Linux Internals Deep-Dive](linux-internals.md) to understand kernel-level process and boot management.
+
+---
+
+## 🎯 Learning Workflow for Freshers
+
+For an entry-level/fresher DevOps engineer, we recommend the following learning workflow for reference concepts:
+
+1.  **Step 1: Filesystem Standard:** Start with [linux-filesystem-hierarchy.md](linux-filesystem-hierarchy.md) to understand FHS standards.
+2.  **Step 2: Interface Boundaries:** Read [terminal-vs-shell.md](terminal-vs-shell.md) to clearly distinguish between terminal wrappers and shells.
+3.  **Step 3: Kernel Internals:** Study [linux-internals.md](linux-internals.md) to learn boot sequences and process fork/exec lifecycles.
+4.  **Step 4: Environments & Distributions:** Review [linux-basics.md](linux-basics.md) to understand shell startup files (`.bashrc` / `.bash_profile`).
+5.  **Step 5: System Administration References:** Drill down into the specific deep-dive guides:
+    *   Security: [file-permissions.md](file-permissions.md) and [user-group-management.md](user-group-management.md).
+    *   Performance: [process-management.md](process-management.md), [networking-concepts.md](networking-concepts.md), and [disk-memory-management.md](disk-memory-management.md).
+    *   Operations: [systemd-services.md](systemd-services.md) and [system-troubleshooting.md](system-troubleshooting.md).
+

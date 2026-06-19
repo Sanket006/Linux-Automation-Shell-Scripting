@@ -23,6 +23,17 @@ After completing this section, you will be able to:
 
 ---
 
+## 🎯 Learning Workflow for Freshers
+
+To prepare for technical interviews effectively, follow this structured review pattern:
+
+1.  **Step 1: Conceptual Study:** Read the detailed explanations in [linux-interview-questions.md](linux-interview-questions.md) and [shell-scripting-interview.md](shell-scripting-interview.md).
+2.  **Step 2: Command Practice:** Whenever you read about a command (e.g. `ss -tulnp` or `lsof`), run it in your terminal to see the live output format.
+3.  **Step 3: Answer Structuring:** Practice the **STAR method** (Situation, Task, Action, Result) for the scenario-based questions (like the 100% full disk issue).
+4.  **Step 4: Mock Presentation:** Explain your answers out loud as if explaining to an interviewer, focusing on simple and clean technical language.
+
+---
+
 ## 🚀 DevOps Advantage
 Interviewers do not look for developers who have just memorized commands; they look for engineers who understand system behaviors and can troubleshoot production outages under pressure. Mastering these questions helps you:
 - **Demonstrate Seniority**: Highlight advanced concepts like inodes, socket statistics, and process locking (`flock`).

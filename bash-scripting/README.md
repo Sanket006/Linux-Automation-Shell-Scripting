@@ -45,3 +45,18 @@ Automating server infrastructure is the core of Platform and DevOps engineering.
 2. Run the code snippets in a safe playground shell.
 3. Review the **DevOps Use Case** and **Interview Q&A** sections in each document.
 4. Practice by inspecting and rewriting the production-ready scripts in the `automation-scripts` directory.
+
+---
+
+## 🎯 Learning Workflow for Freshers
+
+To build robust scripting skills as a fresher, follow this sequential workflow:
+
+1.  **Step 1: Base Execution:** Read [basics.md](basics.md) to learn script shebangs and how execution scopes work.
+2.  **Step 2: Variables & Flow Control:** Read [variables-input.md](variables-input.md) and [conditions.md](conditions.md) to build scripts that accept arguments and make dynamic decisions.
+3.  **Step 3: Loops & Functions:** Go through [loops.md](loops.md) and [functions.md](functions.md) to automate repeated tasks and modularize your code.
+4.  **Step 4: Collections & Lists:** Read [arrays.md](arrays.md) to understand listing datasets in scripts.
+5.  **Step 5: Fail-Safety & Debugging:** Read [error-handling.md](error-handling.md) (`set -euo pipefail`) and [debugging.md](debugging.md) to write error-tolerant code.
+6.  **Step 6: Clean Code Standards:** Review [best-practices.md](best-practices.md) to understand linting with ShellCheck.
+7.  **Step 7: Scripting Practice:** Review [real-world-examples.md](real-world-examples.md) to see how these elements combine in actual production environments.
+

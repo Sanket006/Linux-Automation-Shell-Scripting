@@ -42,3 +42,17 @@ Modern Cloud Platforms, Containers (Docker), and CI/CD Runners (Jenkins, GitHub 
 2. Read the explanation and copy the command to test it inside a safe sandbox environment (e.g., local Ubuntu VM or AWS EC2 instance).
 3. Try out the **Practical Examples** provided in each file.
 4. Review the **Interview Q&A** sections to prepare for technical screenings.
+
+---
+
+## 🎯 Learning Workflow for Freshers
+
+For an entry-level/fresher DevOps engineer, we recommend the following step-by-step learning path to master Linux commands:
+
+1.  **Step 1: File & Directory Management:** Start with [file-management.md](file-management.md) to master navigating the shell and searching files.
+2.  **Step 2: User Access & Security:** Move to [permissions.md](permissions.md) and [user-group-management.md](user-group-management.md) to learn how users and groups access system files securely.
+3.  **Step 3: Storage & Disk Checking:** Review [disk-management.md](disk-management.md) to practice monitoring storage and mounting new storage volumes.
+4.  **Step 4: Monitoring & Diagnostics:** Read [process-management.md](process-management.md) and [networking.md](networking.md) to learn how to check processes and network connection issues.
+5.  **Step 5: Logging & System Status:** Wrap up with [troubleshooting.md](troubleshooting.md) to understand log inspection (`journalctl`, `dmesg`).
+6.  **Step 6: Interview Validation:** Read the **Interview Q&A** section at the bottom of each file to practice explaining these command behaviors.
+

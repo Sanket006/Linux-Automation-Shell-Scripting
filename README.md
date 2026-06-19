@@ -33,7 +33,7 @@ Every script is runnable, every command is explained, and every concept is mappe
 linux-automation-shell-scripting/
 │
 ├── commands/                         # Linux command reference (7 domains)
-│   ├── readme.md                     # Overview table of core commands
+│   ├── README.md                     # Overview table of core commands
 │   ├── file-management.md            # File manipulation & search (ls, cp, mv, find, stat)
 │   ├── permissions.md                # Permission models & access control (chmod, chown, umask)
 │   ├── process-management.md         # Resource analysis & signals (ps, top, kill, nice)
@@ -43,7 +43,7 @@ linux-automation-shell-scripting/
 │   └── troubleshooting.md            # Live logging & diagnostics (journalctl, dmesg)
 │
 ├── shell-scripting/                  # Bash scripting — basics to advanced (9 topics)
-│   ├── readme.md                     # Curricula map & learning outcomes
+│   ├── README.md                     # Curricula map & learning outcomes
 │   ├── basics.md                     # Interpreters, shebangs, execution methods
 │   ├── variables-input.md            # Parameters, env variables, arguments ($@, $#)
 │   ├── conditions.md                 # If/else conditions, operators, cases
@@ -56,7 +56,7 @@ linux-automation-shell-scripting/
 │   └── real-world-examples.md        # 20 practical scripts (log rotation, backups)
 │
 ├── automation-scripts/               # 7 real-world production-ready scripts
-│   ├── readme.md                     # Execution permissions & cron scheduling guides
+│   ├── README.md                     # Execution permissions & cron scheduling guides
 │   ├── system-health-check.sh        # CPU, memory, disk, uptime → /var/log/system_health.log
 │   ├── disk-usage-alert.sh           # Partition space threshold alert (default: 80%)
 │   ├── log-cleanup.sh                # find + rm log files older than N days (default: 7)
@@ -67,22 +67,22 @@ linux-automation-shell-scripting/
 
 │
 ├── cronjobs/                         # Cron scheduling — basics + production examples
-│   ├── readme.md                     # Overview of scheduling mechanisms
+│   ├── README.md                     # Overview of scheduling mechanisms
 │   ├── cron-basics.md                # Crontab syntax, time fields, crontab commands
 │   └── production-cron-examples.md   # flock locks, logging redirects, slack hooks
 │
 ├── systemd-services/                 # systemd — basics + custom service creation
-│   ├── readme.md                     # Overview of unit states & persistence
+│   ├── README.md                     # Overview of unit states & persistence
 │   ├── systemd-basics.md             # Units, targets, systemctl commands, journalctl
 │   └── custom-service-example.md     # Setup guide for custom health-check.service on boot
 │
 ├── interview-questions/              # Linux + shell scripting interview Q&A
-│   ├── readme.md                     # Study guide & communication tips
+│   ├── README.md                     # Study guide & communication tips
 │   ├── linux-interview-questions.md  # 10 Q&A: permissions, processes, disk, networking
 │   └── shell-scripting-interview.md  # 9 Q&A: variables, conditions, error handling, debug
 │
 ├── docs/                             # Linux internals and reference notes
-│   ├── readme.md                     # Conceptual outlines
+│   ├── README.md                     # Conceptual outlines
 │   ├── linux-filesystem-hierarchy.md # Filesystem Hierarchy Standard (FHS) directories
 │   ├── terminal-vs-shell.md          # Visualizing terminal wrappers vs shell interpreters
 │   ├── linux-internals.md            # Kernel space, syscalls, process fork/exec lifecycle
@@ -123,7 +123,7 @@ If you are a fresher or entry-level DevOps engineer, follow this structured week
 ### 📅 Week 3: Bash Shell Scripting & Error Handling
 *   **Goal:** Automate manual steps using clean, error-tolerant, and trace-monitored scripts.
 *   **Study Materials:**
-    *   [Shell Scripting Basics & Loops](shell-scripting/readme.md) — Variables, conditionals, loops, functions, and arrays.
+    *   [Shell Scripting Basics & Loops](shell-scripting/README.md) — Variables, conditionals, loops, functions, and arrays.
     *   [Error Handling Guide](shell-scripting/error-handling.md) — Fail-safe scripting configurations (`set -euo pipefail`) and traps.
     *   [Execution Debugging](shell-scripting/debugging.md) — Trace bugs using selective logging and `set -x`.
     *   [Real-World Shell Examples](shell-scripting/real-world-examples.md) — Study the 20 pre-written automation scripts.
@@ -132,15 +132,15 @@ If you are a fresher or entry-level DevOps engineer, follow this structured week
 ### 📅 Week 4: Scheduling, Background Services & Troubleshooting
 *   **Goal:** Deploy scripts as background services, run recurring jobs, and monitor system resources.
 *   **Study Materials:**
-    *   [Cron Jobs Scheduling](cronjobs/readme.md) — Crontab timing syntax, log redirection, and execution locks (`flock`).
-    *   [systemd Service Units](systemd-services/readme.md) — Declaring unit configurations and auto-starting daemons on boot.
+    *   [Cron Jobs Scheduling](cronjobs/README.md) — Crontab timing syntax, log redirection, and execution locks (`flock`).
+    *   [systemd Service Units](systemd-services/README.md) — Declaring unit configurations and auto-starting daemons on boot.
     *   [Process & Storage Management](commands/process-management.md) & [Disk/Memory Reference](docs/disk-memory-management.md) — System monitoring via `top`, `df`, `free`, and `vmstat`.
     *   [System Troubleshooting Reference](docs/system-troubleshooting.md) — System error tracing, `dmesg`, and `syslog` analysis.
 *   **Hands-on Practice:** Create a custom systemd service to run a script, schedule a cron job to purge temporary logs, and use `df -h` to monitor storage.
 
 ### 🎯 Capstone: Portfolio Projects & Interview Preparation
 *   **Goal:** Standardize your DevOps skillset and prepare for technical screening rounds.
-*   **Hands-on Practice:** Run the 7 production-ready [Automation Scripts](automation-scripts/readme.md) inside a virtual machine or cloud instance.
+*   **Hands-on Practice:** Run the 7 production-ready [Automation Scripts](automation-scripts/README.md) inside a virtual machine or cloud instance.
 *   **Interview Prep:** Review the scenario-based interview guides:
     *   [Linux OS Interview Q&A](interview-questions/linux-interview-questions.md)
     *   [Bash Scripting Interview Q&A](interview-questions/shell-scripting-interview.md)
@@ -169,7 +169,7 @@ Some automation scripts write to system directories (like `/var/log` or `/backup
 ## ⚙️ Usage Guide
 
 ### Running Automation Scripts
-To run any script in the [`automation-scripts/`](automation-scripts/readme.md) directory:
+To run any script in the [`automation-scripts/`](automation-scripts/README.md) directory:
 
 1.  **Grant Execution Permissions**:
     ```bash

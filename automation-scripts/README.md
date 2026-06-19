@@ -46,7 +46,7 @@ Add the following line to schedule the disk usage check to run every hour:
 ```
 
 ### 4. Running as a Background Daemon (systemd)
-To run a script as a persistent service on system boot, set up a custom systemd service. Reference the guide in [`systemd-services/`](../systemd-services/readme.md) for details.
+To run a script as a persistent service on system boot, set up a custom systemd service. Reference the guide in [`systemd-services/`](../systemd-services/README.md) for details.
 
 ---
 

@@ -35,4 +35,4 @@ Interviewers do not look for developers who have just memorized commands; they l
 1. Study the questions and answers in the [Linux Interview Questions](linux-interview-questions.md) guide.
 2. Review the scripting concepts in [Shell Scripting Interview Questions](shell-scripting-interview.md).
 3. Try explaining the answers out loud to practice clear communication.
-4. Supplement this study by reading the deep-dive reference files indexed in [Linux Reference Documentation](../docs/readme.md).
+4. Supplement this study by reading the deep-dive reference files indexed in [Linux Reference Documentation](../docs/README.md).

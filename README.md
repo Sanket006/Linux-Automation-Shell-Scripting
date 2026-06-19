@@ -100,6 +100,53 @@ linux-automation-shell-scripting/
 
 ---
 
+## 🗺️ DevOps Roadmap (4-Week Linux & Automation Guide)
+
+If you are a fresher or entry-level DevOps engineer, follow this structured weekly roadmap using the resources in this repository to master Linux system administration and automation:
+
+### 📅 Week 1: Linux Basics & Filesystem
+*   **Goal:** Learn how Linux is structured, navigate directory layouts, and run commands.
+*   **Study Materials:**
+    *   [Linux Filesystem Hierarchy](docs/linux-filesystem-hierarchy.md) — Master the absolute paths (`/etc`, `/var`, `/bin`, etc.).
+    *   [Terminal vs. Shell Concepts](docs/terminal-vs-shell.md) — Learn how displays map to interpreters.
+    *   [Linux Basics Reference](docs/linux-basics.md) — Read about distributions and environment setups.
+*   **Hands-on Practice:** Log into a VM/WSL, check configuration paths in `/etc`, and view system logs inside `/var/log`.
+
+### 📅 Week 2: User Security, Permissions & Commands
+*   **Goal:** Manage system accounts, configure secure file access, and solve permission blockers.
+*   **Study Materials:**
+    *   [File Permissions Theory](docs/file-permissions.md) & [Command Permissions](commands/permissions.md) — SUID, SGID, Sticky Bits, and `chmod`/`chgrp`.
+    *   [User & Group Management](commands/user-group-management.md) & [Detailed Reference](docs/user-group-management.md) — System files (`/etc/passwd`, `/etc/shadow`) and account management.
+    *   [File Management Commands](commands/file-management.md) — Navigating files with `find`, `grep`, and `tar`.
+*   **Hands-on Practice:** Create a new user group, assign a folder to that group, enable the Sticky Bit, and configure an ACL to grant read-only access to a specific user.
+
+### 📅 Week 3: Bash Shell Scripting & Error Handling
+*   **Goal:** Automate manual steps using clean, error-tolerant, and trace-monitored scripts.
+*   **Study Materials:**
+    *   [Shell Scripting Basics & Loops](shell-scripting/readme.md) — Variables, conditionals, loops, functions, and arrays.
+    *   [Error Handling Guide](shell-scripting/error-handling.md) — Fail-safe scripting configurations (`set -euo pipefail`) and traps.
+    *   [Execution Debugging](shell-scripting/debugging.md) — Trace bugs using selective logging and `set -x`.
+    *   [Real-World Shell Examples](shell-scripting/real-world-examples.md) — Study the 20 pre-written automation scripts.
+*   **Hands-on Practice:** Write a script that checks if a directory exists, creates it if missing, writes a timestamp, and terminates gracefully on error.
+
+### 📅 Week 4: Scheduling, Background Services & Troubleshooting
+*   **Goal:** Deploy scripts as background services, run recurring jobs, and monitor system resources.
+*   **Study Materials:**
+    *   [Cron Jobs Scheduling](cronjobs/readme.md) — Crontab timing syntax, log redirection, and execution locks (`flock`).
+    *   [systemd Service Units](systemd-services/readme.md) — Declaring unit configurations and auto-starting daemons on boot.
+    *   [Process & Storage Management](commands/process-management.md) & [Disk/Memory Reference](docs/disk-memory-management.md) — System monitoring via `top`, `df`, `free`, and `vmstat`.
+    *   [System Troubleshooting Reference](docs/system-troubleshooting.md) — System error tracing, `dmesg`, and `syslog` analysis.
+*   **Hands-on Practice:** Create a custom systemd service to run a script, schedule a cron job to purge temporary logs, and use `df -h` to monitor storage.
+
+### 🎯 Capstone: Portfolio Projects & Interview Preparation
+*   **Goal:** Standardize your DevOps skillset and prepare for technical screening rounds.
+*   **Hands-on Practice:** Run the 7 production-ready [Automation Scripts](automation-scripts/readme.md) inside a virtual machine or cloud instance.
+*   **Interview Prep:** Review the scenario-based interview guides:
+    *   [Linux OS Interview Q&A](interview-questions/linux-interview-questions.md)
+    *   [Bash Scripting Interview Q&A](interview-questions/shell-scripting-interview.md)
+
+---
+
 ## 🚀 Getting Started & Installation
 
 To study, test, and run the scripts locally or on an EC2 instance, follow these steps:

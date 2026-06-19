@@ -9,8 +9,8 @@
 
 | File | Type | Description | Key Focus Areas |
 | :--- | :--- | :--- | :--- |
-| [`systemd-basics.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/systemd-services/systemd-basics.md) | Guide | Core systemd components, unit files, targets, and systemctl command reference. | `systemctl start/stop/status/enable/disable`. |
-| [`custom-service-example.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/systemd-services/custom-service-example.md) | Hands-on | Step-by-step creation of a custom service (`health-check.service`) running a shell script. | Service units, `[Service]` configurations, auto-restart. |
+| [`systemd-basics.md`](systemd-basics.md) | Guide | Core systemd components, unit files, targets, and systemctl command reference. | `systemctl start/stop/status/enable/disable`. |
+| [`custom-service-example.md`](custom-service-example.md) | Hands-on | Step-by-step creation of a custom service (`health-check.service`) running a shell script. | Service units, `[Service]` configurations, auto-restart. |
 
 ---
 
@@ -32,6 +32,6 @@ Modern container engines like Docker and container orchestrators (Kubernetes) ha
 ---
 
 ## ℹ️ How to Use & Next Steps
-1. Read [`systemd-basics.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/systemd-services/systemd-basics.md) to learn how to monitor system services.
-2. Follow [`custom-service-example.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/systemd-services/custom-service-example.md) to build and deploy a custom systemd service that launches a shell script automatically on system boot.
+1. Read [`systemd-basics.md`](systemd-basics.md) to learn how to monitor system services.
+2. Follow [`custom-service-example.md`](custom-service-example.md) to build and deploy a custom systemd service that launches a shell script automatically on system boot.
 3. Practice debugging service logs using `journalctl -u <service-name>`.

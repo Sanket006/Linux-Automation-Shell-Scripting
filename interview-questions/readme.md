@@ -9,8 +9,8 @@ Technical screening is a key hurdle in securing DevOps, Platform, Cloud, and SRE
 
 | File | Category | Description | Key Focus Areas |
 | :--- | :--- | :--- | :--- |
-| [`linux-interview-questions.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/interview-questions/linux-interview-questions.md) | Linux Systems | 10 common questions on permissions, processes, storage, and networking. | `df` vs `du`, `ss` vs `netstat`, process vs service, inode issues. |
-| [`shell-scripting-interview.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/interview-questions/shell-scripting-interview.md) | Bash Scripting | 9 questions covering shebangs, arguments, exit statuses, and error handling. | `set -e`, `trap`, local vars, debugging, redirection. |
+| [`linux-interview-questions.md`](linux-interview-questions.md) | Linux Systems | 10 common questions on permissions, processes, storage, and networking. | `df` vs `du`, `ss` vs `netstat`, process vs service, inode issues. |
+| [`shell-scripting-interview.md`](shell-scripting-interview.md) | Bash Scripting | 9 questions covering shebangs, arguments, exit statuses, and error handling. | `set -e`, `trap`, local vars, debugging, redirection. |
 
 ---
 
@@ -32,7 +32,7 @@ Interviewers do not look for developers who have just memorized commands; they l
 ---
 
 ## ℹ️ How to Use & Next Steps
-1. Study the questions and answers in [`linux-interview-questions.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/interview-questions/linux-interview-questions.md).
-2. Review the scripting concepts in [`shell-scripting-interview.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/interview-questions/shell-scripting-interview.md).
+1. Study the questions and answers in [`linux-interview-questions.md`](linux-interview-questions.md).
+2. Review the scripting concepts in [`shell-scripting-interview.md`](shell-scripting-interview.md).
 3. Try explaining the answers out loud to practice clear communication.
-4. Supplement this study by reading the deep-dive files in [`docs/`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/docs/readme.md).
+4. Supplement this study by reading the deep-dive files in [`docs/`](../docs/readme.md).

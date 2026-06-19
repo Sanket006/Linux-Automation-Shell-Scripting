@@ -9,15 +9,15 @@ This directory contains a complete structured guide to Bash shell scripting, goi
 
 | Topic | File | Key Focus Areas | DevOps Use Case |
 | :--- | :--- | :--- | :--- |
-| **🐚 Basics** | [`basics.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/shell-scripting/basics.md) | Shebang (`#!/bin/bash`), execution, permissions, comments. | Bootstrapping script structure. |
-| **🔣 Variables & Input** | [`variables-input.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/shell-scripting/variables-input.md) | Local vars, env vars, CLI arguments (`$1`, `$2`), `read`. | Writing dynamic and configurable automation. |
-| **⚖️ Conditions & Logic** | [`conditions.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/shell-scripting/conditions.md) | `if/elif/else`, `case` statements, exit codes. | Branching logic based on command success/failure. |
-| **🔁 Loops** | [`loops.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/shell-scripting/loops.md) | `for`, `while`, `until` loops, infinite execution. | Iterating over server lists, files, or waiting for services. |
-| **📦 Functions** | [`functions.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/shell-scripting/functions.md) | Syntax, local variables, passing arguments. | Reusing logic (e.g., logging, cleanup) across scripts. |
-| **📊 Arrays** | [`arrays.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/shell-scripting/arrays.md) | Declaring arrays, listing items, string iteration. | Batch processing multiple servers or directories. |
-| **⚠️ Error Handling** | [`error-handling.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/shell-scripting/error-handling.md) | `set -e`, `trap` cleanups, custom exit codes. | Ensuring scripts exit immediately upon errors. |
-| **🐛 Debugging** | [`debugging.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/shell-scripting/debugging.md) | `set -x`, verbose tracing, custom log functions. | Diagnosing line-by-line execution failures. |
-| **🌟 Best Practices** | [`best-practices.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/shell-scripting/best-practices.md) | Writing clean, readable, robust scripts. | Maintainable scripts in repository standards. |
+| **🐚 Basics** | [`basics.md`](basics.md) | Shebang (`#!/bin/bash`), execution, permissions, comments. | Bootstrapping script structure. |
+| **🔣 Variables & Input** | [`variables-input.md`](variables-input.md) | Local vars, env vars, CLI arguments (`$1`, `$2`), `read`. | Writing dynamic and configurable automation. |
+| **⚖️ Conditions & Logic** | [`conditions.md`](conditions.md) | `if/elif/else`, `case` statements, exit codes. | Branching logic based on command success/failure. |
+| **🔁 Loops** | [`loops.md`](loops.md) | `for`, `while`, `until` loops, infinite execution. | Iterating over server lists, files, or waiting for services. |
+| **📦 Functions** | [`functions.md`](functions.md) | Syntax, local variables, passing arguments. | Reusing logic (e.g., logging, cleanup) across scripts. |
+| **📊 Arrays** | [`arrays.md`](arrays.md) | Declaring arrays, listing items, string iteration. | Batch processing multiple servers or directories. |
+| **⚠️ Error Handling** | [`error-handling.md`](error-handling.md) | `set -e`, `trap` cleanups, custom exit codes. | Ensuring scripts exit immediately upon errors. |
+| **🐛 Debugging** | [`debugging.md`](debugging.md) | `set -x`, verbose tracing, custom log functions. | Diagnosing line-by-line execution failures. |
+| **🌟 Best Practices** | [`best-practices.md`](best-practices.md) | Writing clean, readable, robust scripts. | Maintainable scripts in repository standards. |
 
 ---
 

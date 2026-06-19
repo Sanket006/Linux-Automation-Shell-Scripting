@@ -9,12 +9,12 @@ This directory contains six real-world, production-ready Bash automation scripts
 
 | Script | Description | Key Commands Used | DevOps Significance |
 | :--- | :--- | :--- | :--- |
-| [`system-health-check.sh`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/automation-scripts/system-health-check.sh) | Logs system CPU load, memory, disk, and uptime. | `uptime`, `free`, `df`, `cat /proc/loadavg` | Continuous monitoring and health diagnostics. |
-| [`disk-usage-alert.sh`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/automation-scripts/disk-usage-alert.sh) | Checks disk partition space and alerts if usage exceeds a threshold (80%). | `df`, `awk`, `sed`, `while read` | Preventing full-disk production out-of-memory outages. |
-| [`log-cleanup.sh`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/automation-scripts/log-cleanup.sh) | Finds and purges log files older than a specified number of days (default: 7). | `find`, `-mtime`, `-exec rm` | Automating storage maintenance and space clearing. |
-| [`backup-script.sh`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/automation-scripts/backup-script.sh) | Creates timestamped, compressed tarball backups of specified directories. | `tar -czf`, `date`, `mkdir -p` | Standardizing data backups and disaster recovery assets. |
-| [`service-monitor.sh`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/automation-scripts/service-monitor.sh) | Monitors service state and automatically restarts it if it goes down. | `systemctl is-active`, `systemctl restart` | Auto-recovering critical services (e.g., Nginx, Apache). |
-| [`user-audit.sh`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/automation-scripts/user-audit.sh) | Audits system accounts, listing users with active login shells and UID >= 1000. | `awk`, `cat /etc/passwd` | Verifying user access compliance and security posture. |
+| [`system-health-check.sh`](system-health-check.sh) | Logs system CPU load, memory, disk, and uptime. | `uptime`, `free`, `df`, `cat /proc/loadavg` | Continuous monitoring and health diagnostics. |
+| [`disk-usage-alert.sh`](disk-usage-alert.sh) | Checks disk partition space and alerts if usage exceeds a threshold (80%). | `df`, `awk`, `sed`, `while read` | Preventing full-disk production out-of-memory outages. |
+| [`log-cleanup.sh`](log-cleanup.sh) | Finds and purges log files older than a specified number of days (default: 7). | `find`, `-mtime`, `-exec rm` | Automating storage maintenance and space clearing. |
+| [`backup-script.sh`](backup-script.sh) | Creates timestamped, compressed tarball backups of specified directories. | `tar -czf`, `date`, `mkdir -p` | Standardizing data backups and disaster recovery assets. |
+| [`service-monitor.sh`](service-monitor.sh) | Monitors service state and automatically restarts it if it goes down. | `systemctl is-active`, `systemctl restart` | Auto-recovering critical services (e.g., Nginx, Apache). |
+| [`user-audit.sh`](user-audit.sh) | Audits system accounts, listing users with active login shells and UID >= 1000. | `awk`, `cat /etc/passwd` | Verifying user access compliance and security posture. |
 
 ---
 
@@ -45,7 +45,7 @@ Add the following line to schedule the disk usage check to run every hour:
 ```
 
 ### 4. Running as a Background Daemon (systemd)
-To run a script as a persistent service on system boot, set up a custom systemd service. Reference the guide in [`systemd-services/`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/systemd-services/readme.md) for details.
+To run a script as a persistent service on system boot, set up a custom systemd service. Reference the guide in [`systemd-services/`](../systemd-services/readme.md) for details.
 
 ---
 

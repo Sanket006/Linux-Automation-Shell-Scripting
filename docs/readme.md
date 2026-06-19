@@ -9,9 +9,9 @@ This directory contains reference notes and conceptual deep-dives on the Linux o
 
 | File | Category | Description | Key Focus Areas |
 | :--- | :--- | :--- | :--- |
-| [`linux-filesystem.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/docs/linux-filesystem.md) | OS Layout | Absolute guide to the Linux directory hierarchy. | `/bin`, `/sbin`, `/etc`, `/var`, `/tmp`. |
-| [`terminal-vs-shell.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/docs/terminal-vs-shell.md) | Interfaces | The distinct roles of terminals, terminal emulators, and shell interpreters. | GUI window vs command evaluator, TTY. |
-| [`linux-internals.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/docs/linux-internals.md) | Core Internals | Bootloader steps, kernel vs user space, and process creation/termination lifecycle. | Boot sequences, user/kernel space, `fork`/`exec`. |
+| [`linux-filesystem.md`](linux-filesystem.md) | OS Layout | Absolute guide to the Linux directory hierarchy. | `/bin`, `/sbin`, `/etc`, `/var`, `/tmp`. |
+| [`terminal-vs-shell.md`](terminal-vs-shell.md) | Interfaces | The distinct roles of terminals, terminal emulators, and shell interpreters. | GUI window vs command evaluator, TTY. |
+| [`linux-internals.md`](linux-internals.md) | Core Internals | Bootloader steps, kernel vs user space, and process creation/termination lifecycle. | Boot sequences, user/kernel space, `fork`/`exec`. |
 
 ---
 
@@ -33,6 +33,6 @@ Conceptual depth separates junior administrators from platform architects. Maste
 ---
 
 ## ℹ️ How to Use & Next Steps
-1. Start with [`linux-filesystem.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/docs/linux-filesystem.md) to familiarize yourself with directory layouts.
-2. Read [`terminal-vs-shell.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/docs/terminal-vs-shell.md) to clarify interface definitions.
-3. Review [`linux-internals.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/docs/linux-internals.md) to understand kernel-level process and boot management.
+1. Start with [`linux-filesystem.md`](linux-filesystem.md) to familiarize yourself with directory layouts.
+2. Read [`terminal-vs-shell.md`](terminal-vs-shell.md) to clarify interface definitions.
+3. Review [`linux-internals.md`](linux-internals.md) to understand kernel-level process and boot management.

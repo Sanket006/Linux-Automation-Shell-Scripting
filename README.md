@@ -78,11 +78,13 @@ linux-automation-shell-scripting/
 │   ├── linux-interview-questions.md  # 10 Q&A: permissions, processes, disk, networking
 │   └── shell-scripting-interview.md  # 9 Q&A: variables, conditions, error handling, debug
 │
-└── docs/                             # Linux internals and reference notes
-    ├── readme.md                     # Conceptual outlines
-    ├── linux-filesystem.md           # Filesystem Hierarchy Standard (FHS) directories
-    ├── terminal-vs-shell.md          # Visualizing terminal wrappers vs shell interpreters
-    └── linux-internals.md            # Kernel space, syscalls, process fork/exec lifecycle
+├── docs/                             # Linux internals and reference notes
+│   ├── readme.md                     # Conceptual outlines
+│   ├── linux-filesystem.md           # Filesystem Hierarchy Standard (FHS) directories
+│   ├── terminal-vs-shell.md          # Visualizing terminal wrappers vs shell interpreters
+│   └── linux-internals.md            # Kernel space, syscalls, process fork/exec lifecycle
+│
+└── LICENSE                           # MIT License file
 ```
 
 ---
@@ -109,7 +111,7 @@ Some automation scripts write to system directories (like `/var/log` or `/backup
 ## ⚙️ Usage Guide
 
 ### Running Automation Scripts
-To run any script in the [`automation-scripts/`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/automation-scripts/readme.md) directory:
+To run any script in the [`automation-scripts/`](automation-scripts/readme.md) directory:
 
 1.  **Grant Execution Permissions**:
     ```bash
@@ -178,7 +180,7 @@ We welcome contributions to expand command references, add new scripting topics,
 
 ## 📄 License
 
-This repository is licensed under the **MIT License**. You are free to copy, modify, distribute, and run the code for personal or commercial purposes. See the license file for details.
+This repository is licensed under the [MIT License](LICENSE). You are free to copy, modify, distribute, and run the code for personal or commercial purposes. See the license file for details.
 
 ---
 

@@ -1,62 +1,37 @@
-# ⚙️ systemd Services – README
+# ⚙️ systemd Services & Daemon Management
 
 ## 📌 Overview
-
-This directory focuses on **systemd**, the modern init system used in most Linux distributions.
-
-It explains how Linux services are **created, managed, monitored, and automated**, which is a **critical skill for DevOps and SRE roles**.
+`systemd` is the default system and service manager for modern Linux operating systems. It acts as the initialization system (PID 1) that bootstraps user space and manages user processes, daemons, and background services throughout the server lifecycle. DevOps engineers use systemd to deploy, monitor, restart, and persist applications (e.g., APIs, databases, CI/CD runners) on virtual machines.
 
 ---
 
-## 📂 Contents
+## 📂 Directory Contents
 
-### 🔹 systemd Basics
-
-* `systemd-basics.md`
-* What is systemd and why it replaced SysVinit
-* Units, targets, and service lifecycle
-
-### 🔹 Service Management
-
-* Start, stop, restart, reload services
-* Enable & disable services at boot
-* Service status and logs
-
-### 🔹 Custom Services
-
-* `custom-service-example.md`
-* Creating your own `.service` files
-* Running shell scripts as services
+| File | Type | Description | Key Focus Areas |
+| :--- | :--- | :--- | :--- |
+| [`systemd-basics.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/systemd-services/systemd-basics.md) | Guide | Core systemd components, unit files, targets, and systemctl command reference. | `systemctl start/stop/status/enable/disable`. |
+| [`custom-service-example.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/systemd-services/custom-service-example.md) | Hands-on | Step-by-step creation of a custom service (`health-check.service`) running a shell script. | Service units, `[Service]` configurations, auto-restart. |
 
 ---
 
-## 🔑 Key Concepts Covered
-
-* Service unit files (`.service`)
-* Targets & dependencies
-* Restart policies
-* Logging with `journalctl`
-
----
-
-## 🎯 Learning Outcome
-
-After this section, you will:
-
-* Confidently manage Linux services
-* Create custom production-ready services
-* Troubleshoot service failures
+## 🎯 Learning Outcomes
+After completing this section, you will:
+- Understand the systemd init process, target levels, and unit configurations.
+- Control background services (start, stop, restart, enable, disable) using `systemctl`.
+- Write custom systemd service unit files (`.service`) from scratch to persist custom applications.
+- Troubleshoot service failures, verify logs using `journalctl`, and reload the daemon safely.
 
 ---
 
-## 🚀 DevOps Use Case
-
-systemd is widely used for:
-
-* Running background automation
-* Managing application services
-* Ensuring high availability
+## 🚀 DevOps Advantage
+Modern container engines like Docker and container orchestrators (Kubernetes) handle process persistence automatically. However, the host operating systems, databases, message brokers, and self-hosted build runners themselves are managed directly via systemd. Mastering systemd enables DevOps engineers to:
+- **Ensure High Availability**: Configure auto-restart policies so services revive immediately after a crash.
+- **Manage Service Dependencies**: Define start order constraints (e.g., start the API only *after* the Database service is healthy).
+- **Automate VM Bootups**: Persist vital monitoring agents and scripts across server restarts.
 
 ---
 
-⭐ This folder prepares you for **real production Linux environments**.
+## ℹ️ How to Use & Next Steps
+1. Read [`systemd-basics.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/systemd-services/systemd-basics.md) to learn how to monitor system services.
+2. Follow [`custom-service-example.md`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/systemd-services/custom-service-example.md) to build and deploy a custom systemd service that launches a shell script automatically on system boot.
+3. Practice debugging service logs using `journalctl -u <service-name>`.

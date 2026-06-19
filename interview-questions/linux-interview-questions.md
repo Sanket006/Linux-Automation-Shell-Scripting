@@ -1,61 +1,96 @@
 # 🐧 Linux Interview Questions (DevOps Focus)
 
-## Purpose
-
-This document contains **commonly asked Linux interview questions** tailored for **DevOps, Cloud, and SRE roles**, with a strong focus on **practical usage and troubleshooting**.
-
----
-
-## 1. Linux Basics
-
-**Q1. What is Linux?**
-Linux is an open-source, Unix-like operating system used widely for servers, cloud, containers, and DevOps automation.
-
-**Q2. Difference between Linux and Unix?**
-Unix is proprietary, Linux is open-source and community-driven.
+## 📌 Purpose
+This document contains commonly asked Linux systems engineering and administration questions tailored for DevOps, Cloud, and SRE roles. Rather than simple definition-based answers, this guide provides structured responses that show conceptual depth, real-world troubleshooting experience, and command mastery.
 
 ---
 
-## 2. Files & Permissions
+## ⚙️ Core Questions & Answers
 
-**Q3. Explain file permissions in Linux.**
-Linux uses read (r), write (w), execute (x) permissions for user, group, and others.
+### 1. Linux Basics
 
-**Q4. What is umask?**
-It defines default permissions for newly created files and directories.
+#### **Q1. What is Linux and why is it dominant in DevOps?**
+*   **Answer**: Linux is an open-source, Unix-like operating system kernel. It is dominant in DevOps because:
+    *   **Resource Efficiency**: It is lightweight and can run without a Graphical User Interface (GUI), saving CPU and memory.
+    *   **Open Source & Flexibility**: There are no licensing fees, allowing teams to scale thousands of virtual machines easily.
+    *   **Automation & CLI**: Everything in Linux can be configured and automated via the command line and configuration text files.
+    *   **Container Support**: Linux namespaces and cgroups form the foundation of modern container technologies like Docker and Kubernetes.
 
----
-
-## 3. Process & Services
-
-**Q5. Difference between process and service?**
-A process is a running instance of a program; a service is a long-running background process managed by systemd.
-
-**Q6. How do you check running processes?**
-Using `ps`, `top`, `htop`.
+#### **Q2. What is the difference between Linux and Unix?**
+*   **Answer**:
+    *   **Unix** is a proprietary operating system family originally developed by AT&T Bell Labs in the 1970s (e.g., AIX, Solaris, HP-UX). It is commercial software requiring licenses.
+    *   **Linux** is an open-source clone of Unix created by Linus Torvalds in 1991. It is free, community-driven, and compatible with Unix standards, but does not share any code with the original Unix OS.
 
 ---
 
-## 4. Disk & Memory
+### 2. Files & Permissions
 
-**Q7. Difference between df and du?**
-`df` shows disk usage of filesystems, `du` shows usage of files/directories.
+#### **Q3. Explain the Linux permission model and how to change permissions.**
+*   **Answer**: Linux assigns permissions to three scopes: **Owner (User)**, **Group**, and **Others**. For each scope, there are three basic permissions:
+    *   **Read (`r` / `4`)**: Ability to read file contents or list directories.
+    *   **Write (`w` / `2`)**: Ability to edit files or add/delete files in directories.
+    *   **Execute (`x` / `1`)**: Ability to run files as executables or traverse into directories.
+    *   **Syntax**: Use `chmod` to modify permissions (e.g., `chmod 755 script.sh` sets `rwxr-xr-x`). Use `chown` to modify ownership (e.g., `chown appuser:appgroup file.txt`).
 
-**Q8. What will you do if disk is full?**
-Check usage, clean logs, remove unused files, extend disk if required.
-
----
-
-## 5. Networking
-
-**Q9. How do you check open ports?**
-Using `ss -tuln` or `netstat`.
-
-**Q10. How to test connectivity?**
-Using `ping`, `curl`, `telnet`.
+#### **Q4. What is `umask` and how does it determine default file permissions?**
+*   **Answer**: `umask` (user file-creation mask) is a system setting that determines default permissions for newly created files and directories. It acts as a subtraction filter:
+    *   Base permission for new directories is `777` (`rwxrwxrwx`), and for new files is `666` (`rw-rw-rw-`).
+    *   If the system `umask` is set to `022`, new directories get `755` ($777 - 022$) and new files get `644` ($666 - 022$).
 
 ---
 
-## Interview Tip
+### 3. Process & Services
 
-Always explain answers with **real troubleshooting examples**.
+#### **Q5. What is the difference between a process and a service?**
+*   **Answer**:
+    *   A **process** is an active, running instance of any program on the operating system. It has a unique Process ID (PID) and consumes CPU, memory, and file descriptors.
+    *   A **service** (or daemon) is a long-running background process that performs specific system or application functions (like a web server or database agent). It is usually managed by a service controller like `systemd` and persists across system reboots.
+
+#### **Q6. How do you find and terminate a process consuming too much CPU?**
+*   **Answer**:
+    1.  **Identify**: Run `top` or `htop` in interactive mode, sorting by CPU usage. Alternatively, run:
+        `ps aux --sort=-%cpu | head -n 5`
+    2.  **Terminate**: Get the Process ID (PID) and run:
+        `kill <PID>` (sends SIGTERM, letting the process shut down gracefully).
+    3.  **Force Terminate**: If the process is hanging and does not respond, run:
+        `kill -9 <PID>` (sends SIGKILL, forcing immediate kernel-level termination).
+
+---
+
+### 4. Disk & Memory
+
+#### **Q7. What is the difference between `df` and `du` commands?**
+*   **Answer**:
+    *   `df` (disk free) displays storage statistics for mounted filesystems by reading superblock metadata. It is fast and shows disk-level usage.
+    *   `du` (disk usage) estimates space consumed by specific directories and files by traversing the file tree. It is slower but provides granular directory sizes.
+
+#### **Q8. What steps do you take when a server alerts that its disk is 100% full?**
+*   **Answer**:
+    1.  **Check mount points**: Run `df -h` to see which partition is exhausted.
+    2.  **Find large folders**: Run `sudo du -h --max-depth=1 / | sort -hr` starting from the full partition to identify disk hogs (usually `/var/log` or `/tmp`).
+    3.  **Clean logs**: Truncate active logs rather than deleting them to free space instantly:
+        `echo "" > /var/log/app/huge_log.log`
+    4.  **Check for deleted-but-open files**: If space is not freed, run `lsof +L1` to find deleted files still held open by active processes, then reload/restart those processes.
+    5.  **Check inodes**: Run `df -i` to verify if the disk is full due to running out of metadata files (inodes) rather than physical storage space.
+
+---
+
+### 5. Networking
+
+#### **Q9. How do you find which application is listening on a specific network port?**
+*   **Answer**: Run the socket statistics command:
+    `sudo ss -tulnp | grep :80`
+    *   `-t`: TCP ports.
+    *   `-u`: UDP ports.
+    *   `-l`: Listening ports.
+    *   `-n`: Numerical representations.
+    *   `-p`: Shows the process name and PID owning the port.
+    *(Note: `netstat -tulnp` is legacy and may not be installed).*
+
+#### **Q10. How do you troubleshoot network connectivity between two application servers?**
+*   **Answer**:
+    1.  **Verify host resolution (DNS)**: Run `nslookup <target-hostname>` to check if DNS resolves to the correct IP.
+    2.  **Ping target**: Run `ping -c 4 <target-ip>` to verify basic ICMP routing connectivity.
+    3.  **Check port availability**: Run `nc -zv <target-ip> <port>` or `telnet <target-ip> <port>` to check if the port is open and listening.
+    4.  **Trace route**: Run `traceroute <target-ip>` to locate where packets are dropping.
+    5.  **Check local firewalls**: Run `sudo iptables -L` or `sudo ufw status` to check if traffic is blocked locally.

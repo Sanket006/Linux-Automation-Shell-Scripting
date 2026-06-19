@@ -1,88 +1,64 @@
-# 🤖 Automation Scripts – README
+# 🤖 Production Automation Scripts
 
 ## 📌 Overview
-
-This directory contains **real-world Linux automation scripts** commonly used by **DevOps and System Engineers** in production environments.
-
-Each script focuses on:
-
-* Reducing manual operational work
-* Improving system reliability
-* Automating repetitive administrative tasks
+This directory contains six real-world, production-ready Bash automation scripts designed to solve common DevOps and system administration challenges. Each script focuses on reducing operational overhead, maintaining system uptime, automating repetitive system tasks, and performing security compliance audits.
 
 ---
 
-## 📂 Scripts Included
+## 📂 Scripts Reference & Directory Contents
 
-### 🩺 System Health Check
-
-* `system-health-check.sh`
-* CPU, memory, disk, uptime checks
-* Daily health reporting
-
-### 💽 Disk Usage Alert
-
-* `disk-usage-alert.sh`
-* Threshold-based disk monitoring
-* Email/alert-ready logic
-
-### 🧹 Log Cleanup
-
-* `log-cleanup.sh`
-* Automated old log deletion
-* Prevents disk full issues
-
-### 💾 Backup Automation
-
-* `backup-script.sh`
-* File/database backup
-* Timestamped backups
-
-### 🔁 Service Monitoring
-
-* `service-monitor.sh`
-* Service status checks
-* Auto-restart on failure
-
-### 👥 User Audit
-
-* `user-audit.sh`
-* User & permission audits
-* Security compliance support
+| Script | Description | Key Commands Used | DevOps Significance |
+| :--- | :--- | :--- | :--- |
+| [`system-health-check.sh`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/automation-scripts/system-health-check.sh) | Logs system CPU load, memory, disk, and uptime. | `uptime`, `free`, `df`, `cat /proc/loadavg` | Continuous monitoring and health diagnostics. |
+| [`disk-usage-alert.sh`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/automation-scripts/disk-usage-alert.sh) | Checks disk partition space and alerts if usage exceeds a threshold (80%). | `df`, `awk`, `sed`, `while read` | Preventing full-disk production out-of-memory outages. |
+| [`log-cleanup.sh`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/automation-scripts/log-cleanup.sh) | Finds and purges log files older than a specified number of days (default: 7). | `find`, `-mtime`, `-exec rm` | Automating storage maintenance and space clearing. |
+| [`backup-script.sh`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/automation-scripts/backup-script.sh) | Creates timestamped, compressed tarball backups of specified directories. | `tar -czf`, `date`, `mkdir -p` | Standardizing data backups and disaster recovery assets. |
+| [`service-monitor.sh`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/automation-scripts/service-monitor.sh) | Monitors service state and automatically restarts it if it goes down. | `systemctl is-active`, `systemctl restart` | Auto-recovering critical services (e.g., Nginx, Apache). |
+| [`user-audit.sh`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/automation-scripts/user-audit.sh) | Audits system accounts, listing users with active login shells and UID >= 1000. | `awk`, `cat /etc/passwd` | Verifying user access compliance and security posture. |
 
 ---
 
-## ⚙️ How to Use a Script
+## 🚀 How to Install & Run
 
+### 1. Make the Script Executable
+Before running any script, you must grant execution permission using `chmod`:
 ```bash
-chmod +x script-name.sh
-./script-name.sh
+chmod +x automation-scripts/system-health-check.sh
 ```
 
-For scheduled automation:
-
+### 2. Manual Run
+Execute the script from your terminal:
 ```bash
+# Run the script directly
+./automation-scripts/system-health-check.sh
+```
+
+### 3. Automated Scheduling (Cron Jobs)
+To schedule a script to run automatically at intervals, add it to your user crontab:
+```bash
+# Open crontab editor
 crontab -e
 ```
+Add the following line to schedule the disk usage check to run every hour:
+```bash
+0 * * * * /absolute/path/to/automation-scripts/disk-usage-alert.sh >> /var/log/disk_alerts.log 2>&1
+```
+
+### 4. Running as a Background Daemon (systemd)
+To run a script as a persistent service on system boot, set up a custom systemd service. Reference the guide in [`systemd-services/`](file:///c:/Users/Lenovo/Sanket%20Personal/DevOps/Linux-Automation-Shell-Scripting/systemd-services/readme.md) for details.
 
 ---
 
-## 🎯 Learning Outcome
-
-After practicing these scripts, you will:
-
-* Automate Linux server operations
-* Understand real DevOps automation scenarios
-* Be production-ready for junior DevOps roles
-
----
-
-## ⚠️ Production Note
-
-* Always review scripts before execution
-* Test on staging servers
-* Add logging & alerts for critical tasks
+## 🎯 Learning Outcomes
+After inspecting, testing, and running these scripts, you will:
+- Understand how to structure bash scripts for real production environments.
+- Know how to combine core Linux tools (`awk`, `sed`, `find`, `grep`) to perform automation logic.
+- Master log auditing, system health reporting, and volume management techniques.
+- Be prepared to write custom automation scripts to support cloud and virtualized infrastructure.
 
 ---
 
-⭐ This folder represents **hands-on DevOps automation experience**.
+## ⚠️ Production Best Practices
+- **Never Run Unverified Scripts:** Always read and review the shell code before executing it on production VMs.
+- **Run with Least Privilege:** Avoid running scripts as `root` unless they perform tasks requiring administrator privileges (like service restarts or partition checks).
+- **Log Everything:** Ensure all scheduled scripts redirect their outputs (`stdout` and `stderr`) to log files for auditing and debugging.

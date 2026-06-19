@@ -9,7 +9,7 @@ This directory contains reference notes and conceptual deep-dives on the Linux o
 
 | Document Link | Category | Description | Key Focus Areas |
 | :--- | :--- | :--- | :--- |
-| [Linux Filesystem Hierarchy](linux-filesystem.md) | OS Layout | Absolute guide to the Linux directory hierarchy. | `/bin`, `/sbin`, `/etc`, `/var`, `/tmp`. |
+| [Linux Filesystem Hierarchy](linux-filesystem-hierarchy.md) | OS Layout | Absolute guide to the Linux directory hierarchy. | `/bin`, `/sbin`, `/etc`, `/var`, `/tmp`. |
 | [Terminal vs. Shell Concepts](terminal-vs-shell.md) | Interfaces | The distinct roles of terminals, terminal emulators, and shell interpreters. | GUI window vs command evaluator, TTY. |
 | [Linux Internals Deep-Dive](linux-internals.md) | Core Internals | Bootloader steps, kernel vs user space, and process creation/termination lifecycle. | Boot sequences, user/kernel space, `fork`/`exec`. |
 
@@ -37,18 +37,18 @@ Conceptual depth separates junior administrators from platform architects. Maste
 | Document Link | Category | Description |
 | :--- | :--- | :--- |
 | [Linux Basics Reference](linux-basics.md) | Fundamentals | Deep-dive notes on shell environments and distributions. |
-| [File Management Reference](file-management-deep-dive.md) | File Operations | Extended references for directory utilities and manipulation. |
-| [Permissions & Security Reference](permissions-deep-dive.md) | Security | Permissions theory, ACL parameters, and access configurations. |
-| [Process Management Reference](process-management-deep-dive.md) | Performance | Advanced process states, scheduling niceness, and signals. |
-| [User & Group Management Reference](user-group-management-deep-dive.md) | Admin | Exhaustive guide to system accounts, shadow structures, and groups. |
-| [Networking Reference](networking-deep-dive.md) | Networking | Sockets details, port checks, and multi-server debugging. |
-| [Disk & Memory Reference](disk-memory-deep-dive.md) | Storage | Disk spaces monitoring, filesystem formatting, and virtual memory. |
-| [Systemd Services Reference](systemd-services-deep-dive.md) | Daemons | In-depth systemd unit definitions and reload sequences. |
-| [System Troubleshooting Reference](troubleshooting-deep-dive.md) | Diagnostics | System errors tracing, dmesg, and syslog filters. |
+| [File Management Reference](../commands/file-management.md) | File Operations | Extended references for directory utilities and manipulation. |
+| [Permissions & Security Reference](file-permissions.md) | Security | Permissions theory, ACL parameters, and access configurations. |
+| [Process Management Reference](process-management.md) | Performance | Advanced process states, scheduling niceness, and signals. |
+| [User & Group Management Reference](user-group-management.md) | Admin | Exhaustive guide to system accounts, shadow structures, and groups. |
+| [Networking Reference](networking-concepts.md) | Networking | Sockets details, port checks, and multi-server debugging. |
+| [Disk & Memory Reference](disk-memory-management.md) | Storage | Disk spaces monitoring, filesystem formatting, and virtual memory. |
+| [Systemd Services Reference](systemd-services.md) | Daemons | In-depth systemd unit definitions and reload sequences. |
+| [System Troubleshooting Reference](system-troubleshooting.md) | Diagnostics | System errors tracing, dmesg, and syslog filters. |
 
 ---
 
 ## ℹ️ How to Use & Next Steps
-1. Start with the [Linux Filesystem Hierarchy](linux-filesystem.md) to familiarize yourself with directory layouts.
+1. Start with the [Linux Filesystem Hierarchy](linux-filesystem-hierarchy.md) to familiarize yourself with directory layouts.
 2. Read [Terminal vs. Shell Concepts](terminal-vs-shell.md) to clarify interface definitions.
 3. Review the [Linux Internals Deep-Dive](linux-internals.md) to understand kernel-level process and boot management.

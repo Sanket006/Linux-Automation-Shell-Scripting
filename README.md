@@ -83,18 +83,17 @@ linux-automation-shell-scripting/
 │
 ├── docs/                             # Linux internals and reference notes
 │   ├── readme.md                     # Conceptual outlines
-│   ├── linux-filesystem.md           # Filesystem Hierarchy Standard (FHS) directories
+│   ├── linux-filesystem-hierarchy.md # Filesystem Hierarchy Standard (FHS) directories
 │   ├── terminal-vs-shell.md          # Visualizing terminal wrappers vs shell interpreters
 │   ├── linux-internals.md            # Kernel space, syscalls, process fork/exec lifecycle
 │   ├── linux-basics.md               # Detailed notes on shell environments & distros
-│   ├── file-management-deep-dive.md  # Extended file operation references
-│   ├── permissions-deep-dive.md      # Permissions theory & ACL parameters
-│   ├── process-management-deep-dive.md # Advanced process states & scheduling niceness
-│   ├── user-group-management-deep-dive.md # System accounts, shadow structure details
-│   ├── networking-deep-dive.md       # Socket details, port checks & multi-server debug
-│   ├── disk-memory-deep-dive.md      # Disk usage, filesystems & virtual memory
-│   ├── systemd-services-deep-dive.md # systemd unit definitions & daemon reloads
-│   └── troubleshooting-deep-dive.md  # System errors tracing, dmesg, syslog filters
+│   ├── file-permissions.md           # Permissions theory & ACL parameters
+│   ├── process-management.md         # Advanced process states & scheduling niceness
+│   ├── user-group-management.md      # System accounts, shadow structure details
+│   ├── networking-concepts.md        # Socket details, port checks & multi-server debug
+│   ├── disk-memory-management.md     # Disk usage, filesystems & virtual memory
+│   ├── systemd-services.md           # systemd unit definitions & daemon reloads
+│   └── system-troubleshooting.md     # System errors tracing, dmesg, syslog filters
 │
 └── LICENSE                           # MIT License file
 ```

@@ -30,9 +30,9 @@ Every script is runnable, every command is explained, and every concept is mappe
 ## 📁 Repository Structure
 
 ```
-linux-automation-shell-scripting/
+linux-automation-bash-scripting/
 │
-├── commands/                         # Linux command reference (7 domains)
+├── linux-commands/                         # Linux command reference (7 domains)
 │   ├── README.md                     # Overview table of core commands
 │   ├── file-management.md            # File manipulation & search (ls, cp, mv, find, stat)
 │   ├── permissions.md                # Permission models & access control (chmod, chown, umask)
@@ -42,7 +42,7 @@ linux-automation-shell-scripting/
 │   ├── disk-management.md            # Partition management & inode exhaustion (df, du, mount)
 │   └── troubleshooting.md            # Live logging & diagnostics (journalctl, dmesg)
 │
-├── shell-scripting/                  # Bash scripting — basics to advanced (9 topics)
+├── bash-scripting/                  # Bash scripting — basics to advanced (9 topics)
 │   ├── README.md                     # Curricula map & learning outcomes
 │   ├── basics.md                     # Interpreters, shebangs, execution methods
 │   ├── variables-input.md            # Parameters, env variables, arguments ($@, $#)
@@ -66,7 +66,7 @@ linux-automation-shell-scripting/
 │   └── memory-monitor.sh             # Displays memory usage and alerts on high RAM
 
 │
-├── cronjobs/                         # Cron scheduling — basics + production examples
+├── cron-jobs/                         # Cron scheduling — basics + production examples
 │   ├── README.md                     # Overview of scheduling mechanisms
 │   ├── cron-basics.md                # Crontab syntax, time fields, crontab commands
 │   └── production-cron-examples.md   # flock locks, logging redirects, slack hooks
@@ -76,10 +76,10 @@ linux-automation-shell-scripting/
 │   ├── systemd-basics.md             # Units, targets, systemctl commands, journalctl
 │   └── custom-service-example.md     # Setup guide for custom health-check.service on boot
 │
-├── interview-questions/              # Linux + shell scripting interview Q&A
+├── interview-prep/              # Linux + shell scripting interview Q&A
 │   ├── README.md                     # Study guide & communication tips
-│   ├── linux-interview-questions.md  # 10 Q&A: permissions, processes, disk, networking
-│   └── shell-scripting-interview.md  # 9 Q&A: variables, conditions, error handling, debug
+│   ├── linux-interview-questions.md  # 13 Q&A: permissions, processes, disk, networking, systemd
+│   └── shell-scripting-interview.md  # 11 Q&A: variables, loops, error handling, file reading
 │
 ├── docs/                             # Linux internals and reference notes
 │   ├── README.md                     # Conceptual outlines
@@ -115,26 +115,26 @@ If you are a fresher or entry-level DevOps engineer, follow this structured week
 ### 📅 Week 2: User Security, Permissions & Commands
 *   **Goal:** Manage system accounts, configure secure file access, and solve permission blockers.
 *   **Study Materials:**
-    *   [File Permissions Theory](docs/file-permissions.md) & [Command Permissions](commands/permissions.md) — SUID, SGID, Sticky Bits, and `chmod`/`chgrp`.
-    *   [User & Group Management](commands/user-group-management.md) & [Detailed Reference](docs/user-group-management.md) — System files (`/etc/passwd`, `/etc/shadow`) and account management.
-    *   [File Management Commands](commands/file-management.md) — Navigating files with `find`, `grep`, and `tar`.
+    *   [File Permissions Theory](docs/file-permissions.md) & [Command Permissions](linux-commands/permissions.md) — SUID, SGID, Sticky Bits, and `chmod`/`chgrp`.
+    *   [User & Group Management](linux-commands/user-group-management.md) & [Detailed Reference](docs/user-group-management.md) — System files (`/etc/passwd`, `/etc/shadow`) and account management.
+    *   [File Management Commands](linux-commands/file-management.md) — Navigating files with `find`, `grep`, and `tar`.
 *   **Hands-on Practice:** Create a new user group, assign a folder to that group, enable the Sticky Bit, and configure an ACL to grant read-only access to a specific user.
 
 ### 📅 Week 3: Bash Shell Scripting & Error Handling
 *   **Goal:** Automate manual steps using clean, error-tolerant, and trace-monitored scripts.
 *   **Study Materials:**
-    *   [Shell Scripting Basics & Loops](shell-scripting/README.md) — Variables, conditionals, loops, functions, and arrays.
-    *   [Error Handling Guide](shell-scripting/error-handling.md) — Fail-safe scripting configurations (`set -euo pipefail`) and traps.
-    *   [Execution Debugging](shell-scripting/debugging.md) — Trace bugs using selective logging and `set -x`.
-    *   [Real-World Shell Examples](shell-scripting/real-world-examples.md) — Study the 20 pre-written automation scripts.
+    *   [Shell Scripting Basics & Loops](bash-scripting/README.md) — Variables, conditionals, loops, functions, and arrays.
+    *   [Error Handling Guide](bash-scripting/error-handling.md) — Fail-safe scripting configurations (`set -euo pipefail`) and traps.
+    *   [Execution Debugging](bash-scripting/debugging.md) — Trace bugs using selective logging and `set -x`.
+    *   [Real-World Shell Examples](bash-scripting/real-world-examples.md) — Study the 20 pre-written automation scripts.
 *   **Hands-on Practice:** Write a script that checks if a directory exists, creates it if missing, writes a timestamp, and terminates gracefully on error.
 
 ### 📅 Week 4: Scheduling, Background Services & Troubleshooting
 *   **Goal:** Deploy scripts as background services, run recurring jobs, and monitor system resources.
 *   **Study Materials:**
-    *   [Cron Jobs Scheduling](cronjobs/README.md) — Crontab timing syntax, log redirection, and execution locks (`flock`).
+    *   [Cron Jobs Scheduling](cron-jobs/README.md) — Crontab timing syntax, log redirection, and execution locks (`flock`).
     *   [systemd Service Units](systemd-services/README.md) — Declaring unit configurations and auto-starting daemons on boot.
-    *   [Process & Storage Management](commands/process-management.md) & [Disk/Memory Reference](docs/disk-memory-management.md) — System monitoring via `top`, `df`, `free`, and `vmstat`.
+    *   [Process & Storage Management](linux-commands/process-management.md) & [Disk/Memory Reference](docs/disk-memory-management.md) — System monitoring via `top`, `df`, `free`, and `vmstat`.
     *   [System Troubleshooting Reference](docs/system-troubleshooting.md) — System error tracing, `dmesg`, and `syslog` analysis.
 *   **Hands-on Practice:** Create a custom systemd service to run a script, schedule a cron job to purge temporary logs, and use `df -h` to monitor storage.
 
@@ -142,8 +142,8 @@ If you are a fresher or entry-level DevOps engineer, follow this structured week
 *   **Goal:** Standardize your DevOps skillset and prepare for technical screening rounds.
 *   **Hands-on Practice:** Run the 7 production-ready [Automation Scripts](automation-scripts/README.md) inside a virtual machine or cloud instance.
 *   **Interview Prep:** Review the scenario-based interview guides:
-    *   [Linux OS Interview Q&A](interview-questions/linux-interview-questions.md)
-    *   [Bash Scripting Interview Q&A](interview-questions/shell-scripting-interview.md)
+    *   [Linux OS Interview Q&A](interview-prep/linux-interview-questions.md)
+    *   [Bash Scripting Interview Q&A](interview-prep/shell-scripting-interview.md)
 
 ---
 

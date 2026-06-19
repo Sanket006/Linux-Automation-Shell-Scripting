@@ -9,8 +9,8 @@ Technical screening is a key hurdle in securing DevOps, Platform, Cloud, and SRE
 
 | Document Link | Category | Description | Key Focus Areas |
 | :--- | :--- | :--- | :--- |
-| [Linux Interview Questions](linux-interview-questions.md) | Linux Systems | 10 common questions on permissions, processes, storage, and networking. | `df` vs `du`, `ss` vs `netstat`, process vs service, inode issues. |
-| [Shell Scripting Interview Questions](shell-scripting-interview.md) | Bash Scripting | 9 questions covering shebangs, arguments, exit statuses, and error handling. | `set -e`, `trap`, local vars, debugging, redirection. |
+| [Linux Interview Questions](linux-interview-questions.md) | Linux Systems | 13 common questions on permissions, processes, storage, networking, and systemd. | `df` vs `du`, `ss` vs `netstat`, systemd reload, soft/hard links. |
+| [Shell Scripting Interview Questions](shell-scripting-interview.md) | Bash Scripting | 11 questions covering shebangs, arguments, error handling, and file streaming. | `set -e`, `trap`, line-by-line reading, argument parsing, debugging. |
 
 ---
 

@@ -94,3 +94,35 @@ This document contains commonly asked Linux systems engineering and administrati
     3.  **Check port availability**: Run `nc -zv <target-ip> <port>` or `telnet <target-ip> <port>` to check if the port is open and listening.
     4.  **Trace route**: Run `traceroute <target-ip>` to locate where packets are dropping.
     5.  **Check local firewalls**: Run `sudo iptables -L` or `sudo ufw status` to check if traffic is blocked locally.
+
+---
+
+### 6. Filesystems & System Daemon Management
+
+#### **Q11. What is the difference between soft links (symlinks) and hard links?**
+*   **Answer**:
+    *   **Soft Link (Symlink)**: A symbolic shortcut pointing to the *filename* of another file.
+        *   It has its own unique inode number.
+        *   If the original file is deleted, the symlink becomes "dangling" (broken).
+        *   Can link to directories and span across different physical disk drives (filesystems).
+        *   *Command:* `ln -s target.txt link.txt`
+    *   **Hard Link**: A direct reference pointing to the same physical memory space (*inode*) on disk.
+        *   It shares the exact same inode number as the target file.
+        *   If the original file is deleted, the hard link still works and retains the content until all links to that inode are deleted.
+        *   Cannot cross filesystems or link to directories.
+        *   *Command:* `ln target.txt link.txt`
+
+#### **Q12. What are systemd unit files, and how do you reload a service after changing its configuration?**
+*   **Answer**: Systemd unit files (like `.service` files) are configuration definitions that dictate how background services start, stop, restart, handle dependencies, and bind to boot levels. 
+    *   When modifying a unit configuration or a service file (e.g., in `/etc/systemd/system/`), you must run:
+        `sudo systemctl daemon-reload`
+        This tells systemd to reload all unit files from disk into system controller memory.
+    *   To apply the configuration changes to the running service, execute:
+        `sudo systemctl restart <service-name>`
+        *(Or run `sudo systemctl reload <service-name>` if the service supports parsing its files on the fly without dropping connections, like Nginx).*
+
+#### **Q13. What is Swap memory and when is it utilized by the system?**
+*   **Answer**: Swap space is a designated partition or a block file on the disk storage that Linux uses as an extension of physical RAM (virtual memory).
+    *   **Utilization**: When RAM becomes full, the Linux kernel moves inactive memory pages (pages not accessed in a while) from RAM to Swap space to free up fast memory for active tasks.
+    *   **DevOps Note**: Swap prevents the system from immediately triggering the **Out-Of-Memory (OOM) Killer** to terminate processes when RAM is exhausted. However, because disk reads/writes are significantly slower than RAM, high swap usage ("thrashing") will slow down application performance.
+

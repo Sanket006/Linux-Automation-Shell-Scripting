@@ -37,7 +37,7 @@ Conceptual depth separates junior administrators from platform architects. Maste
 | Document Link | Category | Description |
 | :--- | :--- | :--- |
 | [Linux Basics Reference](linux-basics.md) | Fundamentals | Deep-dive notes on shell environments and distributions. |
-| [File Management Reference](../commands/file-management.md) | File Operations | Extended references for directory utilities and manipulation. |
+| [File Management Reference](../linux-commands/file-management.md) | File Operations | Extended references for directory utilities and manipulation. |
 | [Permissions & Security Reference](file-permissions.md) | Security | Permissions theory, ACL parameters, and access configurations. |
 | [Process Management Reference](process-management.md) | Performance | Advanced process states, scheduling niceness, and signals. |
 | [User & Group Management Reference](user-group-management.md) | Admin | Exhaustive guide to system accounts, shadow structures, and groups. |

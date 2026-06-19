@@ -82,3 +82,39 @@ This document covers commonly asked Bash and shell scripting interview questions
     2.  **Make executable**: Run `chmod +x disk_monitor.sh`.
     3.  **Schedule it**: Set it to run every hour using Cron by running `crontab -e` and adding:
         `0 * * * * /usr/local/bin/disk_monitor.sh`
+
+---
+
+### 6. Scripting Logic & File Operations
+
+#### **Q9. How do you read a text file line-by-line in a Bash script?**
+*   **Answer**: Use a `while read -r` loop combined with input redirection at the end of the loop structure:
+    ```bash
+    while read -r line; do
+      echo "Processing line: $line"
+    done < "input.txt"
+    ```
+    *   `-r` is critical because it prevents backslash characters from acting as escape characters.
+    *   This streaming approach is highly memory-efficient because it reads one line at a time instead of loading the entire file into memory (which could crash the system for very large log files).
+
+#### **Q10. How do you check if a file or directory exists before running a command?**
+*   **Answer**: Use conditional bracket testing with the `-f` flag for files and the `-d` flag for directories:
+    *   **Check File**:
+        ```bash
+        if [ -f "/etc/nginx/nginx.conf" ]; then
+          echo "Nginx config file exists."
+        fi
+        ```
+    *   **Check Directory**:
+        ```bash
+        if [ -d "/var/log/nginx" ]; then
+          echo "Nginx log directory exists."
+        fi
+        ```
+
+#### **Q11. What is the difference between `"$*"` and `"$@"` when passing arguments to a script?**
+*   **Answer**: Both represent the list of positional arguments passed to the script, but they expand differently when double-quoted:
+    *   `"$*"` expands to a **single string** containing all arguments joined together by the first character of the `IFS` variable (usually a space), e.g., `"arg1 arg2 arg3"`.
+    *   `"$@"` expands to **multiple separate strings**, preserving spaces within individual arguments, e.g., `"arg1"` `"arg2"` `"arg3"`.
+    *   *DevOps Practice:* Always use `"$@"` when iterating over or forwarding command line arguments, as it preserves pathnames or inputs containing spaces.
+

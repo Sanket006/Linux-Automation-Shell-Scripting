@@ -1,7 +1,7 @@
 # 🤖 Production Automation Scripts
 
 ## 📌 Overview
-This directory contains six real-world, production-ready Bash automation scripts designed to solve common DevOps and system administration challenges. Each script focuses on reducing operational overhead, maintaining system uptime, automating repetitive system tasks, and performing security compliance audits.
+This directory contains seven real-world, production-ready Bash automation scripts designed to solve common DevOps and system administration challenges. Each script focuses on reducing operational overhead, maintaining system uptime, automating repetitive system tasks, and performing security compliance audits.
 
 ---
 

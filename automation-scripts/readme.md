@@ -7,15 +7,15 @@ This directory contains six real-world, production-ready Bash automation scripts
 
 ## 📂 Scripts Reference & Directory Contents
 
-| Script | Description | Key Commands Used | DevOps Significance |
+| Script Link | Description | Key Commands Used | DevOps Significance |
 | :--- | :--- | :--- | :--- |
-| [`system-health-check.sh`](system-health-check.sh) | Logs system CPU load, memory, disk, and uptime. | `uptime`, `free`, `df`, `cat /proc/loadavg` | Continuous monitoring and health diagnostics. |
-| [`disk-usage-alert.sh`](disk-usage-alert.sh) | Checks disk partition space and alerts if usage exceeds a threshold (80%). | `df`, `awk`, `sed`, `while read` | Preventing full-disk production out-of-memory outages. |
-| [`log-cleanup.sh`](log-cleanup.sh) | Finds and purges log files older than a specified number of days (default: 7). | `find`, `-mtime`, `-exec rm` | Automating storage maintenance and space clearing. |
-| [`backup-script.sh`](backup-script.sh) | Creates timestamped, compressed tarball backups of specified directories. | `tar -czf`, `date`, `mkdir -p` | Standardizing data backups and disaster recovery assets. |
-| [`service-monitor.sh`](service-monitor.sh) | Monitors service state and automatically restarts it if it goes down. | `systemctl is-active`, `systemctl restart` | Auto-recovering critical services (e.g., Nginx, Apache). |
-| [`user-audit.sh`](user-audit.sh) | Audits system accounts, listing users with active login shells and UID >= 1000. | `awk`, `cat /etc/passwd` | Verifying user access compliance and security posture. |
-| [`memory-monitor.sh`](memory-monitor.sh) | Displays memory usage percentage and alerts on high usage. | `free`, `awk` | Real-time RAM threshold checking and leak diagnostics. |
+| [System Health Check](system-health-check.sh) | Logs system CPU load, memory, disk, and uptime. | `uptime`, `free`, `df`, `cat /proc/loadavg` | Continuous monitoring and health diagnostics. |
+| [Disk Usage Alert](disk-usage-alert.sh) | Checks disk partition space and alerts if usage exceeds a threshold (80%). | `df`, `awk`, `sed`, `while read` | Preventing full-disk production out-of-memory outages. |
+| [Log Cleanup](log-cleanup.sh) | Finds and purges log files older than a specified number of days (default: 7). | `find`, `-mtime`, `-exec rm` | Automating storage maintenance and space clearing. |
+| [Backup Automation](backup-script.sh) | Creates timestamped, compressed tarball backups of specified directories. | `tar -czf`, `date`, `mkdir -p` | Standardizing data backups and disaster recovery assets. |
+| [Service Monitoring](service-monitor.sh) | Monitors service state and automatically restarts it if it goes down. | `systemctl is-active`, `systemctl restart` | Auto-recovering critical services (e.g., Nginx, Apache). |
+| [User Audit](user-audit.sh) | Audits system accounts, listing users with active login shells and UID >= 1000. | `awk`, `cat /etc/passwd` | Verifying user access compliance and security posture. |
+| [Memory Monitoring](memory-monitor.sh) | Displays memory usage percentage and alerts on high usage. | `free`, `awk` | Real-time RAM threshold checking and leak diagnostics. |
 
 ---
 

@@ -7,10 +7,10 @@ Technical screening is a key hurdle in securing DevOps, Platform, Cloud, and SRE
 
 ## 📂 Directory Contents
 
-| File | Category | Description | Key Focus Areas |
+| Document Link | Category | Description | Key Focus Areas |
 | :--- | :--- | :--- | :--- |
-| [`linux-interview-questions.md`](linux-interview-questions.md) | Linux Systems | 10 common questions on permissions, processes, storage, and networking. | `df` vs `du`, `ss` vs `netstat`, process vs service, inode issues. |
-| [`shell-scripting-interview.md`](shell-scripting-interview.md) | Bash Scripting | 9 questions covering shebangs, arguments, exit statuses, and error handling. | `set -e`, `trap`, local vars, debugging, redirection. |
+| [Linux Interview Questions](linux-interview-questions.md) | Linux Systems | 10 common questions on permissions, processes, storage, and networking. | `df` vs `du`, `ss` vs `netstat`, process vs service, inode issues. |
+| [Shell Scripting Interview Questions](shell-scripting-interview.md) | Bash Scripting | 9 questions covering shebangs, arguments, exit statuses, and error handling. | `set -e`, `trap`, local vars, debugging, redirection. |
 
 ---
 
@@ -32,7 +32,7 @@ Interviewers do not look for developers who have just memorized commands; they l
 ---
 
 ## ℹ️ How to Use & Next Steps
-1. Study the questions and answers in [`linux-interview-questions.md`](linux-interview-questions.md).
-2. Review the scripting concepts in [`shell-scripting-interview.md`](shell-scripting-interview.md).
+1. Study the questions and answers in the [Linux Interview Questions](linux-interview-questions.md) guide.
+2. Review the scripting concepts in [Shell Scripting Interview Questions](shell-scripting-interview.md).
 3. Try explaining the answers out loud to practice clear communication.
-4. Supplement this study by reading the deep-dive files in [`docs/`](../docs/readme.md).
+4. Supplement this study by reading the deep-dive reference files indexed in [Linux Reference Documentation](../docs/readme.md).

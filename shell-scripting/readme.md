@@ -7,18 +7,18 @@ This directory contains a complete structured guide to Bash shell scripting, goi
 
 ## 📂 Directory Contents
 
-| Topic | File | Key Focus Areas | DevOps Use Case |
+| Topic | Document Link | Key Focus Areas | DevOps Use Case |
 | :--- | :--- | :--- | :--- |
-| **🐚 Basics** | [`basics.md`](basics.md) | Shebang (`#!/bin/bash`), execution, permissions, comments. | Bootstrapping script structure. |
-| **🔣 Variables & Input** | [`variables-input.md`](variables-input.md) | Local vars, env vars, CLI arguments (`$1`, `$2`), `read`. | Writing dynamic and configurable automation. |
-| **⚖️ Conditions & Logic** | [`conditions.md`](conditions.md) | `if/elif/else`, `case` statements, exit codes. | Branching logic based on command success/failure. |
-| **🔁 Loops** | [`loops.md`](loops.md) | `for`, `while`, `until` loops, infinite execution. | Iterating over server lists, files, or waiting for services. |
-| **📦 Functions** | [`functions.md`](functions.md) | Syntax, local variables, passing arguments. | Reusing logic (e.g., logging, cleanup) across scripts. |
-| **📊 Arrays** | [`arrays.md`](arrays.md) | Declaring arrays, listing items, string iteration. | Batch processing multiple servers or directories. |
-| **⚠️ Error Handling** | [`error-handling.md`](error-handling.md) | `set -e`, `trap` cleanups, custom exit codes. | Ensuring scripts exit immediately upon errors. |
-| **🐛 Debugging** | [`debugging.md`](debugging.md) | `set -x`, verbose tracing, custom log functions. | Diagnosing line-by-line execution failures. |
-| **🌟 Best Practices** | [`best-practices.md`](best-practices.md) | Writing clean, readable, robust scripts. | Maintainable scripts in repository standards. |
-| **🚀 Real-World Examples** | [`real-world-examples.md`](real-world-examples.md) | 20 practical scripts (log rotation, backups, monitors). | Custom script building reference. |
+| **🐚 Basics** | [Shell Scripting Basics](basics.md) | Shebang (`#!/bin/bash`), execution, permissions, comments. | Bootstrapping script structure. |
+| **🔣 Variables & Input** | [Variables & User Input](variables-input.md) | Local vars, env vars, CLI arguments (`$1`, `$2`), `read`. | Writing dynamic and configurable automation. |
+| **⚖️ Conditions & Logic** | [Conditions & Logic](conditions.md) | `if/elif/else`, `case` statements, exit codes. | Branching logic based on command success/failure. |
+| **🔁 Loops** | [Loops in Bash](loops.md) | `for`, `while`, `until` loops, infinite execution. | Iterating over server lists, files, or waiting for services. |
+| **📦 Functions** | [Functions & Modularity](functions.md) | Syntax, local variables, passing arguments. | Reusing logic (e.g., logging, cleanup) across scripts. |
+| **📊 Arrays** | [Arrays in Bash](arrays.md) | Declaring arrays, listing items, string iteration. | Batch processing multiple servers or directories. |
+| **⚠️ Error Handling** | [Error Handling & Fault Tolerance](error-handling.md) | `set -e`, `trap` cleanups, custom exit codes. | Ensuring scripts exit immediately upon errors. |
+| **🐛 Debugging** | [Debugging Shell Scripts](debugging.md) | `set -x`, verbose tracing, custom log functions. | Diagnosing line-by-line execution failures. |
+| **🌟 Best Practices** | [Shell Scripting Best Practices](best-practices.md) | Writing clean, readable, robust scripts. | Maintainable scripts in repository standards. |
+| **🚀 Real-World Examples** | [Real-World Scripting Examples](real-world-examples.md) | 20 practical scripts (log rotation, backups, monitors). | Custom script building reference. |
 
 ---
 

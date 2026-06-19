@@ -7,15 +7,15 @@ This directory serves as a comprehensive reference guide for essential Linux com
 
 ## 📂 Directory Contents
 
-| Category | File | Description | Key Commands Covered |
+| Category | Document Link | Description | Key Commands Covered |
 | :--- | :--- | :--- | :--- |
-| **📁 File & Directory** | [`file-management.md`](file-management.md) | Managing, finding, and inspecting files & directories. | `ls`, `cp`, `mv`, `rm`, `find`, `stat` |
-| **🔐 Permissions & Ownership** | [`permissions.md`](permissions.md) | Securing resources and debugging permission errors. | `chmod`, `chown`, `chgrp`, `umask` |
-| **⚙️ Process Management** | [`process-management.md`](process-management.md) | Monitoring resource consumption and system performance. | `ps`, `top`, `htop`, `kill`, `nice`, `uptime` |
-| **👥 User & Group** | [`user-group-management.md`](user-group-management.md) | Access control and managing system user accounts. | `useradd`, `usermod`, `groupadd`, `passwd` |
-| **🌐 Networking** | [`networking.md`](networking.md) | Analyzing system connectivity, sockets, and ports. | `ip`, `ss`, `ping`, `curl`, `wget` |
-| **💽 Disk & Storage** | [`disk-management.md`](disk-management.md) | Analyzing storage capacity and mounting filesystems. | `df`, `du`, `lsblk`, `mount`, `umount` |
-| **🛠️ Troubleshooting** | [`troubleshooting.md`](troubleshooting.md) | Inspecting logs, system events, and service issues. | `journalctl`, `dmesg`, `systemctl` |
+| **📁 File & Directory** | [File & Directory Management](file-management.md) | Managing, finding, and inspecting files & directories. | `ls`, `cp`, `mv`, `rm`, `find`, `stat` |
+| **🔐 Permissions & Ownership** | [Permissions & Ownership](permissions.md) | Securing resources and debugging permission errors. | `chmod`, `chown`, `chgrp`, `umask` |
+| **⚙️ Process Management** | [Process Management](process-management.md) | Monitoring resource consumption and system performance. | `ps`, `top`, `htop`, `kill`, `nice`, `uptime` |
+| **👥 User & Group** | [User & Group Management](user-group-management.md) | Access control and managing system user accounts. | `useradd`, `usermod`, `groupadd`, `passwd` |
+| **🌐 Networking** | [Networking Commands](networking.md) | Analyzing system connectivity, sockets, and ports. | `ip`, `ss`, `ping`, `curl`, `wget` |
+| **💽 Disk & Storage** | [Disk & Storage Management](disk-management.md) | Analyzing storage capacity and mounting filesystems. | `df`, `du`, `lsblk`, `mount`, `umount` |
+| **🛠️ Troubleshooting** | [System Troubleshooting](troubleshooting.md) | Inspecting logs, system events, and service issues. | `journalctl`, `dmesg`, `systemctl` |
 
 ---
 

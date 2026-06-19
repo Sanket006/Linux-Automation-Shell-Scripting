@@ -8,7 +8,7 @@
 ![DevOps](https://img.shields.io/badge/DevOps-0A0A0A?style=for-the-badge&logo=devdotto&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-*Hands-on Linux automation for DevOps — 6 production-ready scripts, cron scheduling, systemd services, command references across 7 domains, shell scripting from basics to error handling, and interview preparation*
+*Hands-on Linux automation for DevOps — 7 production-ready scripts, cron scheduling, systemd services, command references across 7 domains, shell scripting from basics to error handling, and interview preparation*
 
 </div>
 
@@ -19,7 +19,7 @@
 This repository is a structured, hands-on Linux learning resource tailored for DevOps and platform engineers. It bridges the gap between raw commands and production-grade automation. Inside, you will find:
 - **Comprehensive Command Guides**: Detailed references with production tips across 7 core operating system domains.
 - **Structured Scripting Tutorials**: Tutorials covering Bash script syntax from initial execution to advanced error trapping, scopes, and debugging.
-- **Production-Ready Scripts**: 6 automation scripts solving actual administration tasks (backups, service monitoring, log rotation, and audits).
+- **Production-Ready Scripts**: 7 automation scripts solving actual administration tasks (backups, service monitoring, log rotation, and audits).
 - **Daemon & Job Scheduling**: In-depth setup walkthroughs for Cron Jobs and systemd background services.
 - **Interview Q&A Sets**: Structured, scenario-based questions to help you succeed in technical screenings.
 
@@ -52,16 +52,19 @@ linux-automation-shell-scripting/
 │   ├── arrays.md                     # Collections, arrays, and key-value maps
 │   ├── error-handling.md             # Fail-fast options (set -euo pipefail) & traps
 │   ├── debugging.md                  # Execution tracing (set -x, Selective trace)
-│   └── best-practices.md             # Clean code, ShellCheck lint rules
+│   ├── best-practices.md             # Clean code, ShellCheck lint rules
+│   └── real-world-examples.md        # 20 practical scripts (log rotation, backups)
 │
-├── automation-scripts/               # 6 real-world production-ready scripts
+├── automation-scripts/               # 7 real-world production-ready scripts
 │   ├── readme.md                     # Execution permissions & cron scheduling guides
 │   ├── system-health-check.sh        # CPU, memory, disk, uptime → /var/log/system_health.log
 │   ├── disk-usage-alert.sh           # Partition space threshold alert (default: 80%)
 │   ├── log-cleanup.sh                # find + rm log files older than N days (default: 7)
 │   ├── backup-script.sh              # tar.gz timestamped backups of /home → /backup
 │   ├── service-monitor.sh            # systemctl status check + auto-restart (default: nginx)
-│   └── user-audit.sh                 # Audits users with active login shells and UID >= 1000
+│   ├── user-audit.sh                 # Audits users with active login shells and UID >= 1000
+│   └── memory-monitor.sh             # Displays memory usage and alerts on high RAM
+
 │
 ├── cronjobs/                         # Cron scheduling — basics + production examples
 │   ├── readme.md                     # Overview of scheduling mechanisms
@@ -82,7 +85,16 @@ linux-automation-shell-scripting/
 │   ├── readme.md                     # Conceptual outlines
 │   ├── linux-filesystem.md           # Filesystem Hierarchy Standard (FHS) directories
 │   ├── terminal-vs-shell.md          # Visualizing terminal wrappers vs shell interpreters
-│   └── linux-internals.md            # Kernel space, syscalls, process fork/exec lifecycle
+│   ├── linux-internals.md            # Kernel space, syscalls, process fork/exec lifecycle
+│   ├── linux-basics.md               # Detailed notes on shell environments & distros
+│   ├── file-management-deep-dive.md  # Extended file operation references
+│   ├── permissions-deep-dive.md      # Permissions theory & ACL parameters
+│   ├── process-management-deep-dive.md # Advanced process states & scheduling niceness
+│   ├── user-group-management-deep-dive.md # System accounts, shadow structure details
+│   ├── networking-deep-dive.md       # Socket details, port checks & multi-server debug
+│   ├── disk-memory-deep-dive.md      # Disk usage, filesystems & virtual memory
+│   ├── systemd-services-deep-dive.md # systemd unit definitions & daemon reloads
+│   └── troubleshooting-deep-dive.md  # System errors tracing, dmesg, syslog filters
 │
 └── LICENSE                           # MIT License file
 ```

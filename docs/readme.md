@@ -32,6 +32,22 @@ Conceptual depth separates junior administrators from platform architects. Maste
 
 ---
 
+## 🧠 Deep Dives (Imported References)
+
+| File | Category | Description |
+| :--- | :--- | :--- |
+| [`linux-basics.md`](linux-basics.md) | Fundamentals | Deep-dive notes on shell environments and distributions. |
+| [`file-management-deep-dive.md`](file-management-deep-dive.md) | File Operations | Extended references for directory utilities and manipulation. |
+| [`permissions-deep-dive.md`](permissions-deep-dive.md) | Security | Permissions theory, ACL parameters, and access configurations. |
+| [`process-management-deep-dive.md`](process-management-deep-dive.md) | Performance | Advanced process states, scheduling niceness, and signals. |
+| [`user-group-management-deep-dive.md`](user-group-management-deep-dive.md) | Admin | Exhaustive guide to system accounts, shadow structures, and groups. |
+| [`networking-deep-dive.md`](networking-deep-dive.md) | Networking | Sockets details, port checks, and multi-server debugging. |
+| [`disk-memory-deep-dive.md`](disk-memory-deep-dive.md) | Storage | Disk spaces monitoring, filesystem formatting, and virtual memory. |
+| [`systemd-services-deep-dive.md`](systemd-services-deep-dive.md) | Daemons | In-depth systemd unit definitions and reload sequences. |
+| [`troubleshooting-deep-dive.md`](troubleshooting-deep-dive.md) | Diagnostics | System errors tracing, dmesg, and syslog filters. |
+
+---
+
 ## ℹ️ How to Use & Next Steps
 1. Start with [`linux-filesystem.md`](linux-filesystem.md) to familiarize yourself with directory layouts.
 2. Read [`terminal-vs-shell.md`](terminal-vs-shell.md) to clarify interface definitions.

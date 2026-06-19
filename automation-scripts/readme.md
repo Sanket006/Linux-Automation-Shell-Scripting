@@ -15,6 +15,7 @@ This directory contains six real-world, production-ready Bash automation scripts
 | [`backup-script.sh`](backup-script.sh) | Creates timestamped, compressed tarball backups of specified directories. | `tar -czf`, `date`, `mkdir -p` | Standardizing data backups and disaster recovery assets. |
 | [`service-monitor.sh`](service-monitor.sh) | Monitors service state and automatically restarts it if it goes down. | `systemctl is-active`, `systemctl restart` | Auto-recovering critical services (e.g., Nginx, Apache). |
 | [`user-audit.sh`](user-audit.sh) | Audits system accounts, listing users with active login shells and UID >= 1000. | `awk`, `cat /etc/passwd` | Verifying user access compliance and security posture. |
+| [`memory-monitor.sh`](memory-monitor.sh) | Displays memory usage percentage and alerts on high usage. | `free`, `awk` | Real-time RAM threshold checking and leak diagnostics. |
 
 ---
 

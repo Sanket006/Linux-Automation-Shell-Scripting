@@ -83,20 +83,36 @@ echo "Backup will be saved as: $FILE_NAME"
 
 ## 🛠️ DevOps Use Cases & Scenarios
 
-### Standardized Execution Wrap
-In complex scripts, you want to perform cleanup tasks (like deleting temp directories) if any step fails. Writing a modular wrapper helps enforce consistent execution:
+### Parameterized Deployment Step Function
+In complex deploy scripts, you want each deployment step to have consistent logging and error reporting. Wrapping each step in a function achieves this cleanly without repeating code:
 ```bash
 #!/bin/bash
-TEMP_DIR="/tmp/deployment_assets"
 
-cleanup() {
-  echo "Cleaning up temporary files..."
-  rm -rf "$TEMP_DIR"
+# Generic step runner: logs the step name, runs the command, and checks the result
+run_step() {
+    local STEP_NAME=$1
+    local STEP_CMD=$2
+
+    echo "--- Running: $STEP_NAME ---"
+    eval "$STEP_CMD"
+
+    if [ $? -eq 0 ]; then
+        echo "✅ $STEP_NAME succeeded."
+    else
+        echo "❌ $STEP_NAME failed. Aborting deployment."
+        exit 1
+    fi
 }
 
-# Trap script exits (successful or failed) and run cleanup
-trap cleanup EXIT
+# Each step is a single function call — easy to add, remove, or reorder
+run_step "Install Dependencies"  "npm install --production"
+run_step "Run Tests"             "npm test"
+run_step "Build Application"     "npm run build"
+run_step "Restart Service"       "systemctl restart myapp"
 ```
+
+> **📎 Note:** For the `trap cleanup EXIT` pattern that runs cleanup on script failure, see [`error-handling.md`](error-handling.md).
+
 
 ---
 

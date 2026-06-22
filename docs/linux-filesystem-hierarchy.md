@@ -1,11 +1,10 @@
 # 📁 Linux Filesystem Hierarchy (FHS)
 
-## 📌 Purpose
 Linux structures its system directories according to the **Filesystem Hierarchy Standard (FHS)**. Rather than scattering files arbitrarily, every category of file (e.g., user binaries, configuration scripts, logs, libraries, device files) has a strict, standardized home directory. DevOps engineers must understand this structure to configure application pathways, locate system logs, store variables, and place custom utility binaries correctly.
 
 ---
 
-## ⚙️ Core System Directories
+## ⚙️ Core Concepts
 
 | Directory | Name/Purpose | Contents | DevOps Use Case |
 | :--- | :--- | :--- | :--- |
@@ -21,7 +20,7 @@ Linux structures its system directories according to the **Filesystem Hierarchy 
 
 ---
 
-## 🛠️ DevOps Use Cases & Scenarios
+## 🛠️ DevOps Use Cases
 
 ### Resolving Mount Point Outages
 When deploying database applications (e.g., MySQL/PostgreSQL), the default storage location is `/var/lib/mysql`. Because `/var` is often on the root partition, a high-volume database can quickly exhaust disk space, crashing the server.
@@ -29,7 +28,7 @@ When deploying database applications (e.g., MySQL/PostgreSQL), the default stora
 
 ---
 
-## 💡 Interview Q&A & Tips
+## 💡 Interview Q&A
 
 **Q1: What is the difference between `/bin`, `/usr/bin`, and `/usr/local/bin`?**
 *   **Answer:**
@@ -39,3 +38,7 @@ When deploying database applications (e.g., MySQL/PostgreSQL), the default stora
 
 **Q2: Which directory contains server configuration files, and what is its significance?**
 *   **Answer:** The `/etc` directory. It holds static configuration files for the operating system and installed services (e.g., sshd configurations, network interface settings, package manager repositories). It does not contain binary executables.
+
+---
+
+> 🔖 **Note:** Mastery of the FHS is critical for standardizing deployments and managing server resources efficiently.

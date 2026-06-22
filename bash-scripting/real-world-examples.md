@@ -1,395 +1,228 @@
-## 1. Log Rotation Script
-This script compresses and archives old log files:
+# 🚀 Real-World Scripting Examples
+
+This document contains practical Bash script examples commonly used by DevOps engineers to automate backups, log rotations, service status checks, and system maintenance tasks. Each example is kept concise to illustrate the core logic, while adhering to scripting best practices.
+
+> 📖 **See also:** For production-grade versions with structured logging, email notifications, and cloud uploads, see the scripts in [`../scripts/`](../scripts/).
+
+---
+
+## ⚙️ Core Automation Patterns
+
+These scripts demonstrate typical automation patterns:
+*   Iterating over lists (arrays) of servers or files.
+*   Checking exit codes (`$?`) to handle errors.
+*   Redirecting stdout/stderr to log files.
+*   Interacting with system services (`systemctl`) and APIs.
+
+---
+
+## 💻 Practical Examples
+
+### 1. Log Rotation Script
+Compresses and archives log files older than a specified number of days.
 ```bash
 #!/bin/bash
+set -euo pipefail
 
-# Directory containing the logs
 LOG_DIR="/var/log/myapp"
-
-# Directory to store archived logs
 ARCHIVE_DIR="/var/log/myapp/archive"
-
-# Number of days after which logs are archived
 DAYS=7
 
-# Create archive directory if it doesn't exist
 mkdir -p "$ARCHIVE_DIR"
 
-# Find and compress log files older than $DAYS
-find "$LOG_DIR" -type f -mtime +"$DAYS" -exec tar -czf "$ARCHIVE_DIR/$(basename {}).tar.gz" {} \; -exec rm -f {} \;
+# Find and compress log files older than $DAYS, then remove the original file
+find "$LOG_DIR" -type f -name "*.log" -mtime +"$DAYS" -exec tar -czf "$ARCHIVE_DIR/\$(basename {}).tar.gz" {} \; -exec rm -f {} \;
 
 echo "Log rotation completed."
 ```
 
-## 2. Backup Script
-This script uses `rsync` to back up files:
+### 2. Backup Script (rsync)
+Synchronizes a source directory to a backup destination and logs the outcome.
 ```bash
 #!/bin/bash
 
-# Source directory to back up
 SOURCE_DIR="/home/user/documents"
-
-# Destination directory for backup
 DEST_DIR="/backup/user/documents"
-
-# Log file for backup process
 LOG_FILE="/var/log/backup.log"
+
+mkdir -p "$DEST_DIR"
 
 # Run the backup using rsync
 rsync -av --delete "$SOURCE_DIR" "$DEST_DIR" >> "$LOG_FILE" 2>&1
 
 # Check if the backup was successful
 if [ $? -eq 0 ]; then
-    echo "Backup completed successfully."
+  echo "$(date): Backup completed successfully." >> "$LOG_FILE"
 else
-    echo "Backup failed. Check the log file for details."
+  echo "$(date): Backup failed!" >> "$LOG_FILE"
 fi
 ```
 
-## 3. Disk Usage Monitor
-This script checks disk usage and sends an alert if it exceeds a certain threshold:
+### 3. System Update & Cleanup
+Updates package lists, upgrades installed packages, and clears package cache.
 ```bash
 #!/bin/bash
+set -euo pipefail
 
-# Threshold for disk usage in percentage
-THRESHOLD=80
-
-# Directory to check
-CHECK_DIR="/"
-
-# Get the current disk usage percentage
-USAGE=$(df "$CHECK_DIR" | awk 'NR==2 {print $5}' | sed 's/%//')
-
-# Compare usage with threshold
-if [ "$USAGE" -ge "$THRESHOLD" ]; then
-    echo "Warning: Disk usage on $CHECK_DIR is at ${USAGE}% which exceeds the threshold of ${THRESHOLD}%." | mail -s "Disk Usage Alert" user@example.com
-fi
-```
-
-## 4. System Update Script
-This script updates all packages and cleans up:
-```bash
-#!/bin/bash
-
-# Update package lists
+echo "Starting system update..."
 sudo apt update
-# Upgrade all packages
 sudo apt upgrade -y
-# Remove unused packages
 sudo apt autoremove -y
-# Clean up package cache
 sudo apt clean
-
 echo "System update and cleanup completed."
 ```
 
-## 5. User Management Script
-This script can create a new user and set a password:
+### 4. Service Monitoring
+Checks if a specific service is active and attempts to restart it if offline.
 ```bash
 #!/bin/bash
 
-# Username to create
-USERNAME="newuser"
-
-# Home directory
-HOME_DIR="/home/$USERNAME"
-
-# Default shell
-SHELL="/bin/bash"
-
-# Create the user
-sudo useradd -m -d "$HOME_DIR" -s "$SHELL" "$USERNAME"
-
-# Set the user password
-echo "$USERNAME:password" | sudo chpasswd
-
-echo "User $USERNAME created and password set."
-```
-
-## 6. Process Monitoring Script
-This script checks if a specific process is running and sends an alert if it’s not:
-```bash
-#!/bin/bash
-
-# Name of the process to check
-PROCESS_NAME="myapp"
-
-# Email to send alert to
-EMAIL="user@example.com"
+PROCESS_NAME="nginx"
+EMAIL="admin@example.com"
 
 # Check if the process is running
-if pgrep "$PROCESS_NAME" > /dev/null; then
-    echo "$PROCESS_NAME is running."
+if systemctl is-active --quiet "$PROCESS_NAME"; then
+  echo "$PROCESS_NAME is running."
 else
-    echo "Alert: $PROCESS_NAME is not running!" | mail -s "$PROCESS_NAME Alert" "$EMAIL"
+  echo "Alert: $PROCESS_NAME is not running! Attempting restart."
+  sudo systemctl restart "$PROCESS_NAME"
+  
+  # Send an alert email
+  echo "Alert: $PROCESS_NAME was down. Attempted restart on \$(hostname)" | mail -s "Service Alert: $PROCESS_NAME" "$EMAIL"
 fi
 ```
 
-## 7. Automated Cleanup Script
-This script removes temporary files and clears cache:
+### 5. Automated Directory Cleanup
+Cleans out temporary files in specified directories.
 ```bash
 #!/bin/bash
 
-# Directories to clean
 TEMP_DIRS=("/tmp" "/var/tmp" "/home/user/.cache")
 
-# Remove files in each temp directory
-for DIR in "${TEMP_DIRS[@]}"; do
-    echo "Cleaning $DIR..."
-    sudo rm -rf "$DIR"/*
+for dir in "${TEMP_DIRS[@]}"; do
+  if [[ -d "$dir" ]]; then
+    echo "Cleaning $dir..."
+    sudo find "$dir" -mindepth 1 -maxdepth 1 -exec rm -rf {} \;
+  fi
 done
 
 echo "Cleanup completed."
 ```
 
-## 8. Network Health Check Script
-This script pings multiple servers and reports their status:
+### 6. Network Host Check
+Pings multiple servers to check connectivity.
 ```bash
 #!/bin/bash
 
-# List of servers to ping
 SERVERS=("8.8.8.8" "1.1.1.1" "google.com")
+EMAIL="admin@example.com"
 
-# Ping each server and report status
-for SERVER in "${SERVERS[@]}"; do
-    if ping -c 1 "$SERVER" &>/dev/null; then
-        echo "$SERVER is reachable."
-    else
-        echo "Warning: $SERVER is not reachable!" | mail -s "Network Alert" user@example.com
-    fi
+for server in "${SERVERS[@]}"; do
+  if ping -c 1 -W 2 "$server" &>/dev/null; then
+    echo "$server is reachable."
+  else
+    echo "Warning: $server is not reachable!" | mail -s "Network Alert" "$EMAIL"
+  fi
 done
 ```
 
-## 9. Data Extraction Script
-This script extracts specific information from a log file:
+### 7. Keyword Log Extraction
+Scans log files for errors and exports them to an output file.
 ```bash
 #!/bin/bash
+set -euo pipefail
 
-# Log file to parse
 LOG_FILE="/var/log/myapp.log"
+OUTPUT_FILE="/home/user/extracted_errors.txt"
 
-# Output file for extracted data
-OUTPUT_FILE="/home/user/extracted_data.txt"
-
-# Extract lines containing a specific keyword
-grep "ERROR" "$LOG_FILE" > "$OUTPUT_FILE"
-
-echo "Data extraction completed. See $OUTPUT_FILE for results."
-```
-
-## 10. Notification Script
-This script sends an email notification based on certain triggers:
-```bash
-#!/bin/bash
-
-# Condition to check (e.g., CPU usage)
-CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | sed 's/.*, *\([0-9.]*\)%* id.*/\1/' | awk '{print 100 - $1}')
-THRESHOLD=80
-
-# Check if CPU usage exceeds threshold
-if (( $(echo "$CPU_USAGE > $THRESHOLD" | bc -l) )); then
-    echo "Warning: CPU usage is at ${CPU_USAGE}% which exceeds the threshold of ${THRESHOLD}%." | mail -s "CPU Usage Alert" user@example.com
+if [[ -f "$LOG_FILE" ]]; then
+  grep -i "ERROR" "$LOG_FILE" > "$OUTPUT_FILE" || true
+  echo "Data extraction completed. See $OUTPUT_FILE for results."
+else
+  echo "Error: Log file $LOG_FILE not found!"
+  exit 1
 fi
 ```
 
-## 11. Automated Database Backup Script
-This script backs up a MySQL database and compresses the backup:
+### 8. CPU Usage Threshold Alert
+Triggers an alert if CPU usage exceeds a defined threshold.
 ```bash
 #!/bin/bash
 
-# Database credentials
-DB_USER="username"
-DB_PASSWORD="password"
+THRESHOLD=80
+EMAIL="admin@example.com"
+
+# Extract CPU idle percentage and calculate usage
+CPU_IDLE=$(top -bn1 | grep "Cpu(s)" | awk '{print $8}')
+CPU_USAGE=$(echo "100 - $CPU_IDLE" | bc)
+
+if (( $(echo "$CPU_USAGE > $THRESHOLD" | bc -l) )); then
+  echo "Warning: CPU usage is at ${CPU_USAGE}% (Threshold: ${THRESHOLD}%)." | mail -s "CPU Usage Alert" "$EMAIL"
+fi
+```
+
+### 9. Database Backup (MySQL)
+Creates a compressed MySQL database backup.
+```bash
+#!/bin/bash
+set -euo pipefail
+
+DB_USER="root"
+DB_PASS="password"
 DB_NAME="mydatabase"
-
-# Backup directory
 BACKUP_DIR="/backups/mysql"
+DATE=$(date +%F-%H%M)
 
-# Date format
-DATE=$(date +\%F)
+mkdir -p "$BACKUP_DIR"
 
-# Create backup
-mysqldump -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" | gzip > "$BACKUP_DIR/$DB_NAME-$DATE.sql.gz"
+# Perform backup and compress it
+mysqldump -u "$DB_USER" -p"$DB_PASS" "$DB_NAME" | gzip > "$BACKUP_DIR/$DB_NAME-$DATE.sql.gz"
 
-echo "Database backup completed and saved to $BACKUP_DIR."
+echo "Database backup completed successfully."
 ```
 
-## 12. File Synchronization Script
-This script synchronizes files between two directories using `rsync`:
+### 10. Automated SSL Renewal (Let's Encrypt)
+Checks and renews SSL certificates using certbot and reloads the web server.
 ```bash
 #!/bin/bash
+set -euo pipefail
 
-# Source and destination directories
-SOURCE_DIR="/home/user/documents"
-DEST_DIR="/backup/documents"
-
-# Synchronize files
-rsync -av --delete "$SOURCE_DIR" "$DEST_DIR"
-
-echo "File synchronization completed."
-```
-
-## 13. System Health Check Script
-This script checks CPU, memory, and disk usage and logs the results:
-```bash
-#!/bin/bash
-
-# Log file
-LOG_FILE="/var/log/system_health.log"
-
-# Get CPU usage
-CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | awk '{print $2 + $4}')
-
-# Get memory usage
-MEM_USAGE=$(free | grep Mem | awk '{print $3/$2 * 100.0}')
-
-# Get disk usage
-DISK_USAGE=$(df / | grep / | awk '{print $5}' | sed 's/%//')
-
-# Log the results
-echo "$(date): CPU: $CPU_USAGE%, Memory: $MEM_USAGE%, Disk: $DISK_USAGE%" >> "$LOG_FILE"
-
-echo "System health check completed and logged."
-```
-
-## 14. Log Monitoring and Alert Script
-This script monitors a log file for specific keywords and sends an alert:
-```bash
-#!/bin/bash
-
-# Log file to monitor
-LOG_FILE="/var/log/myapp.log"
-
-# Keyword to search for
-KEYWORD="ERROR"
-
-# Email to send alert to
-EMAIL="user@example.com"
-
-# Monitor the log file for the keyword
-tail -F "$LOG_FILE" | while read LINE; do
-    if echo "$LINE" | grep -q "$KEYWORD"; then
-        echo "Alert: Found $KEYWORD in log!" | mail -s "$KEYWORD Alert" "$EMAIL"
-    fi
-done
-```
-
-## 15. Automated User Cleanup Script
-This script removes inactive users from the system:
-```bash
-#!/bin/bash
-
-# Inactive days threshold
-INACTIVITY_DAYS=30
-
-# Find users inactive for more than the threshold
-for USER in $(cut -d: -f1 /etc/passwd); do
-    LAST_LOGIN=$(lastlog -u "$USER" | awk 'NR==2 {print $4, $5, $6, $7}')
-    if [ -z "$LAST_LOGIN" ] || [ "$(date -d "$LAST_LOGIN" +%s)" -lt "$(date -d "-$INACTIVITY_DAYS days" +%s)" ]; then
-        sudo userdel -r "$USER"
-        echo "User $USER removed due to inactivity."
-    fi
-done
-```
-
-## 16. Automated SSL Certificate Renewal Script 
-This script checks and renews SSL certificates using `certbot`:
-```bash
-#!/bin/bash
-
-# Domain to renew certificate for
 DOMAIN="example.com"
 
-# Path to certbot
-CERTBOT="/usr/bin/certbot"
+# Renew certificate
+sudo certbot renew --quiet
 
-# Renew the certificate
-$CERTBOT renew --domain "$DOMAIN"
+# Reload Nginx to apply new certificate
+sudo systemctl reload nginx
 
-# Reload the web server (assuming Apache here)
-sudo systemctl reload apache2
-
-echo "SSL certificate renewed and web server reloaded."
-```
-## 17. Automated System Update and Reboot Script
-This script updates the system and reboots if necessary:
-```bash
-#!/bin/bash
-
-# Update the system
-sudo apt update && sudo apt upgrade -y
-
-# Check if a reboot is required
-if [ -f /var/run/reboot-required ]; then
-    echo "Reboot is required. Rebooting now..."
-    sudo reboot
-else
-    echo "System update completed. No reboot needed."
-fi
-```
-## 18. Automated Disk Space Alert Script
-This script monitors disk space and sends alerts if usage exceeds a threshold:
-```bash
-#!/bin/bash
-
-# Threshold for disk usage
-THRESHOLD=90
-
-# Disk to monitor
-DISK="/"
-
-# Email to send alert to
-EMAIL="user@example.com"
-
-# Get disk usage
-USAGE=$(df "$DISK" | awk 'NR==2 {print $5}' | sed 's/%//')
-
-# Check if usage exceeds threshold
-if [ "$USAGE" -ge "$THRESHOLD" ]; then
-    echo "Warning: Disk usage on $DISK is at ${USAGE}% which exceeds the threshold of ${THRESHOLD}%." | mail -s "Disk Space Alert" "$EMAIL"
-fi
-```
-## 19. Automated Log Backup Script
-This script backs up log files to a remote server:
-```bash
-#!/bin/bash
-
-# Local log directory
-LOG_DIR="/var/log/myapp"
-
-# Remote server and directory
-REMOTE_USER="user"
-REMOTE_HOST="remote.example.com"
-REMOTE_DIR="/backups/logs"
-
-# Create a compressed archive of the logs
-tar -czf /tmp/log_backup_$(date +\%F).tar.gz -C "$LOG_DIR" .
-
-# Transfer the archive to the remote server
-scp /tmp/log_backup_$(date +\%F).tar.gz "$REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR"
-
-# Clean up local temporary file
-rm /tmp/log_backup_$(date +\%F).tar.gz
-
-echo "Log backup completed and transferred to remote server."
+echo "SSL renewal check completed."
 ```
 
-## 20. Automated Security Patch Script
-This script applies security patches and notifies the admin:
-```bash
-#!/bin/bash
+---
 
-# Update and upgrade only security patches
-sudo apt-get update
-sudo apt-get upgrade -y --only-upgrade
+## 🛠️ DevOps Use Cases
 
-# Check for new security patches
-SECURITY_UPDATES=$(sudo unattended-upgrades --dry-run | grep "^Reading package lists..." | wc -l)
+### Continuous System Auditing
+DevOps teams schedule the **Service Monitoring** and **CPU Usage Threshold Alert** scripts via Cron or run them as systemd timers to achieve simple, lightweight agentless monitoring on independent host nodes.
 
-# Notify admin if there are security updates
-if [ "$SECURITY_UPDATES" -gt 0 ]; then
-    echo "Security patches applied. Please review the updates." | mail -s "Security Patch Alert" admin@example.com
-fi
+---
 
-echo "Security patch applied and notifies the admin."
-```
+## 💡 Interview Q&A
+
+**Q1: How do you prevent a backup script from writing to an unmounted disk partition?**
+*   **Answer:** You should check if the backup destination directory is a mount point before running the backup. This can be done using the `mountpoint` command:
+    ```bash
+    if mountpoint -q /backup; then
+      # Run backup
+    else
+      echo "Backup disk not mounted! Aborting."
+      exit 1
+    fi
+    ```
+
+**Q2: What is the significance of using `set -euo pipefail` in real-world scripts?**
+*   **Answer:** It ensures the script behaves predictably and fails fast on errors. It catches uninitialized variables, stops execution if any intermediate command fails, and prevents pipeline errors from being masked, preventing scripts from continuing in a corrupt or unexpected system state.
+
+---
+
+> 🔖 **Note:** Practice building scripts in this directory by running them in a local virtual environment or container.

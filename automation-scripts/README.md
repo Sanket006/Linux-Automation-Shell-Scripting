@@ -1,7 +1,9 @@
-# 🤖 Production Automation Scripts
+# 🤖 Automation Scripts (Beginner Reference)
 
 ## 📌 Overview
-This directory contains seven real-world, production-ready Bash automation scripts designed to solve common DevOps and system administration challenges. Each script focuses on reducing operational overhead, maintaining system uptime, automating repetitive system tasks, and performing security compliance audits.
+This directory contains seven concise, beginner-readable Bash scripts that demonstrate core automation patterns for common DevOps tasks. Each script is kept intentionally short to make the underlying logic easy to understand and study.
+
+> **📂 Production-Grade Versions:** Three of these scripts — system health monitoring, log cleanup, and backup — have fully upgraded, production-ready counterparts in [`../scripts/`](../scripts/). Those versions include structured logging, thresholds, S3 upload support, error trapping, and multi-step workflows. Start here to learn the concept, then review `../scripts/` to see how the same idea is implemented in a real DevOps environment.
 
 ---
 
@@ -9,13 +11,15 @@ This directory contains seven real-world, production-ready Bash automation scrip
 
 | Script Link | Description | Key Commands Used | DevOps Significance |
 | :--- | :--- | :--- | :--- |
-| [System Health Check](system-health-check.sh) | Logs system CPU load, memory, disk, and uptime. | `uptime`, `free`, `df`, `cat /proc/loadavg` | Continuous monitoring and health diagnostics. |
-| [Disk Usage Alert](disk-usage-alert.sh) | Checks disk partition space and alerts if usage exceeds a threshold (80%). | `df`, `awk`, `sed`, `while read` | Preventing full-disk production out-of-memory outages. |
-| [Log Cleanup](log-cleanup.sh) | Finds and purges log files older than a specified number of days (default: 7). | `find`, `-mtime`, `-exec rm` | Automating storage maintenance and space clearing. |
-| [Backup Automation](backup-script.sh) | Creates timestamped, compressed tarball backups of specified directories. | `tar -czf`, `date`, `mkdir -p` | Standardizing data backups and disaster recovery assets. |
+| [System Health Check](system-health-check.sh) | Logs system CPU load, memory, disk, and uptime. *(See [`../scripts/system_health_check.sh`](../scripts/system_health_check.sh) for the full version.)* | `uptime`, `free`, `df`, `cat /proc/loadavg` | Continuous monitoring and health diagnostics. |
+| [Disk Usage Alert](disk-usage-alert.sh) | Checks disk partition space and alerts if usage exceeds a threshold (80%). | `df`, `awk`, `sed`, `while read` | Preventing full-disk production outages. |
+| [Log Cleanup](log-cleanup.sh) | Finds and purges log files older than a specified number of days (default: 7). *(See [`../scripts/log_cleanup.sh`](../scripts/log_cleanup.sh) for the full version.)* | `find`, `-mtime`, `-exec rm` | Automating storage maintenance and space clearing. |
+| [Backup Automation](backup-script.sh) | Creates timestamped, compressed tarball backups of specified directories. *(See [`../scripts/backup.sh`](../scripts/backup.sh) for the full version with DB + S3 support.)* | `tar -czf`, `date`, `mkdir -p` | Standardizing data backups and disaster recovery assets. |
 | [Service Monitoring](service-monitor.sh) | Monitors service state and automatically restarts it if it goes down. | `systemctl is-active`, `systemctl restart` | Auto-recovering critical services (e.g., Nginx, Apache). |
 | [User Audit](user-audit.sh) | Audits system accounts, listing users with active login shells and UID >= 1000. | `awk`, `cat /etc/passwd` | Verifying user access compliance and security posture. |
 | [Memory Monitoring](memory-monitor.sh) | Displays memory usage percentage and alerts on high usage. | `free`, `awk` | Real-time RAM threshold checking and leak diagnostics. |
+
+
 
 ---
 
@@ -50,7 +54,7 @@ To run a script as a persistent service on system boot, set up a custom systemd 
 
 ---
 
-## 🎯 Learning Outcomes
+## 📚 Skills You Will Gain
 After inspecting, testing, and running these scripts, you will:
 - Understand how to structure bash scripts for real production environments.
 - Know how to combine core Linux tools (`awk`, `sed`, `find`, `grep`) to perform automation logic.
@@ -71,7 +75,17 @@ If you are new to DevOps automation scripts, follow this practice sequence:
 
 ---
 
-## ⚠️ Production Best Practices
-- **Never Run Unverified Scripts:** Always read and review the shell code before executing it on production VMs.
-- **Run with Least Privilege:** Avoid running scripts as `root` unless they perform tasks requiring administrator privileges (like service restarts or partition checks).
-- **Log Everything:** Ensure all scheduled scripts redirect their outputs (`stdout` and `stderr`) to log files for auditing and debugging.
+## ✅ Before You Run Any Script
+
+A quick pre-flight checklist specific to scripts in this directory:
+
+1. **Verify paths and variables** — Open the script and confirm `LOG_FILE`, `SERVICE`, `DAYS`, and similar variables match your environment before running.
+2. **Test in staging first** — Run scripts against a non-production VM or container before applying them to live infrastructure.
+3. **Redirect output to logs** — When scheduling via cron, always append stdout and stderr to a log file:
+   ```bash
+   0 * * * * /path/to/disk-usage-alert.sh >> /var/log/disk_alerts.log 2>&1
+   ```
+4. **Check exit codes** — After running manually, verify with `echo $?` that the script exited `0` (success).
+
+> For general authoring rules (least privilege, ShellCheck linting, variable quoting), see the [Contribution Guidelines](../README.md#-contribution-guidelines) in the root `README.md`.
+

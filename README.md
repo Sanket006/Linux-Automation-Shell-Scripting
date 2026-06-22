@@ -92,7 +92,6 @@ linux-automation-bash-scripting/
 │   ├── user-group-management.md      # System accounts, shadow structure details
 │   ├── networking-concepts.md        # Socket details, port checks & multi-server debug
 │   ├── disk-memory-management.md     # Disk usage, filesystems & virtual memory
-│   ├── systemd-services.md           # systemd unit definitions & daemon reloads
 │   └── system-troubleshooting.md     # System errors tracing, dmesg, syslog filters
 │
 └── LICENSE                           # MIT License file

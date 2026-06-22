@@ -1,13 +1,12 @@
 # 💻 Terminal vs. Shell: Key Differences
 
-## 📌 Purpose
 The terms "terminal" and "shell" are often used interchangeably, leading to confusion. However, they refer to two completely different components of the command line interface. Understanding this distinction is helpful for configuring SSH client connections, setting up remote developers, customizing shell prompts, and automating pipelines.
 
 ---
 
 ## ⚙️ Core Concepts
 
-```
+```text
 ┌──────────────────────────────────────────────┐
 │             Terminal Emulator                │ (Displays windows, accepts keyboard, prints output)
 │  (e.g., VS Code Terminal, PuTTY, Terminal.app)│
@@ -44,17 +43,21 @@ Historically, terminals were physical machines (keyboards and printers) wired to
 
 ---
 
-## 🛠️ DevOps Use Cases & Scenarios
+## 🛠️ DevOps Use Cases
 
 ### Setting Up Shell Prompts & Multiplexers
 When managing remote servers, DevOps engineers configure terminal utilities like **`tmux`** or **`screen`** (terminal multiplexers) inside their shell sessions. These tools allow them to run multiple shell tabs and keep background processes active even if their terminal window loses network connection or the SSH session drops.
 
 ---
 
-## 💡 Interview Q&A & Tips
+## 💡 Interview Q&A
 
 **Q1: What is the difference between a Terminal and a Shell?**
 *   **Answer:** A terminal is a client application that provides a graphical window to interact with the computer. A shell is a text-based interpreter program that runs inside the terminal, evaluates user commands, and runs logic.
 
 **Q2: What is the command to check which shell you are currently using?**
 *   **Answer:** Run `echo $SHELL` to print the path of your default login shell, or run `ps -p $$` to view the currently running process name for your active shell session.
+
+---
+
+> 🔖 **Note:** Clarifying terminal and shell scopes helps troubleshoot SSH connectivity issues, profile loads, and character encoding bugs.

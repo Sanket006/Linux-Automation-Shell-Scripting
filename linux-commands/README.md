@@ -19,11 +19,9 @@ This directory serves as a comprehensive reference guide for essential Linux com
 
 ---
 
-## 🎯 Learning Outcomes
+## 📋 What You Will Learn
 After reviewing this section, you will be able to:
 - Confidently navigate and manage the Linux operating system from the CLI.
-- Secure files and directory paths using correct group, owner, and mode permissions.
-- Inspect running processes to identify memory or CPU performance bottlenecks.
 - Troubleshoot network connectivity and storage-related production issues.
 - Retrieve and analyze service and kernel logs to debug application failures.
 

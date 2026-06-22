@@ -1,6 +1,5 @@
 # 🧠 Linux Internals (DevOps View)
 
-## 📌 Purpose
 Linux internals refer to the architecture and execution mechanisms of the Linux operating system kernel. A solid grasp of internals—such as the separation of memory spaces, the sequence of system boot, and process lifecycles—is essential for diagnosing application crashes, debugging resource starvation, profiling application performance, and understanding container isolation.
 
 ---
@@ -30,7 +29,7 @@ Every process is created by cloning an existing process:
 
 ---
 
-## 💻 Practical Commands
+## 💻 Practical Examples
 
 ### 1. Inspecting System Calls (`strace`)
 Trace all system calls made by a basic command:
@@ -47,7 +46,7 @@ ps -eo pid,ppid,state,cmd | grep defunct
 
 ---
 
-## 🛠️ DevOps Use Cases & Scenarios
+## 🛠️ DevOps Use Cases
 
 ### How Containers Work Under the Hood
 Docker containers are not virtual machines; they are standard user-space processes running directly on the host Linux kernel. They achieve isolation using two kernel features:
@@ -56,7 +55,7 @@ Docker containers are not virtual machines; they are standard user-space process
 
 ---
 
-## 💡 Interview Q&A & Tips
+## 💡 Interview Q&A
 
 **Q1: What is a System Call (Syscall) in Linux?**
 *   **Answer:** A system call is the programmatic interface that allows a user-space application to request services from the privileged Linux kernel (such as allocating memory, reading/writing files on disk, or creating network connections).
@@ -65,3 +64,7 @@ Docker containers are not virtual machines; they are standard user-space process
 *   **Answer:** A zombie process is a process that has completed execution but still exists in the process table because its parent has not yet read its exit status via `wait()`. Since they are already dead, you cannot kill them with `kill -9`. To clean them up:
     1.  Notify the parent process to read the status.
     2.  If the parent is unresponsive, restart or terminate the parent process. Once the parent dies, the zombie becomes an orphan, is adopted by `systemd` (PID 1), and is immediately cleared.
+
+---
+
+> 🔖 **Note:** A strong understanding of OS internals empowers DevOps engineers to optimize application performance and debug containerization/orchestration failures.
